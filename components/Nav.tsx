@@ -31,30 +31,30 @@ export default function Nav() {
           : 'bg-transparent'
       }`}
     >
-      <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-20 md:h-24 flex items-center justify-between">
+      <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-24 md:h-28 flex items-center justify-between">
         <Link
           href="/"
           aria-label="Fikon Agency"
-          className="relative block h-10 md:h-14 w-[220px] md:w-[300px]"
+          className="relative block w-14 h-14 md:w-20 md:h-20 shrink-0"
         >
           <Image
-            src="/brand/fikon-wordmark.png"
+            src="/brand/fikon-fig.png"
             alt="Fikon Agency"
             fill
             priority
-            sizes="300px"
-            className={`object-contain object-left transition-opacity duration-300 ${
+            sizes="80px"
+            className={`object-contain transition-opacity duration-300 ${
               dark ? 'opacity-0' : 'opacity-100'
             }`}
           />
           <Image
-            src="/brand/fikon-wordmark-plommon.png"
+            src="/brand/fikon-fig-plommon.png"
             alt=""
             aria-hidden
             fill
             priority
-            sizes="300px"
-            className={`object-contain object-left transition-opacity duration-300 ${
+            sizes="80px"
+            className={`object-contain transition-opacity duration-300 ${
               dark ? 'opacity-100' : 'opacity-0'
             }`}
           />

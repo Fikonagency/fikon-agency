@@ -8,7 +8,7 @@ import { join } from 'node:path';
 
 const BRAND = fileURLToPath(new URL('../public/brand/', import.meta.url));
 const APP = fileURLToPath(new URL('../app/', import.meta.url));
-const PLOMMON = '#1E0A12';
+const PLOMMON = '#631A28';
 
 async function darken(src, out) {
   const meta = await sharp(src).metadata();

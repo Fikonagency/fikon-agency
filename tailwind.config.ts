@@ -5,7 +5,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        plommon: '#1E0A12',
+        plommon: '#631A28',
         bordeaux: '#7A1C2E',
         rose: '#C0888E',
         cream: '#F0E0CC',
