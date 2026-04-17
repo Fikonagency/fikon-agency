@@ -1,25 +1,20 @@
-import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import Manifest from '@/components/Manifest';
-import Portfolio from '@/components/Portfolio';
-import About from '@/components/About';
-import Clients from '@/components/Clients';
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
+import Marquee from '@/components/Marquee';
+import Services from '@/components/Services';
+import FeaturedWork from '@/components/FeaturedWork';
+import PhotoStrip from '@/components/PhotoStrip';
+import ContactCTA from '@/components/ContactCTA';
+import { photos } from '@/lib/data';
 
 export default function Home() {
   return (
     <>
-      <Nav />
-      <main>
-        <Hero />
-        <Manifest />
-        <Portfolio />
-        <About />
-        <Clients />
-        <Contact />
-      </main>
-      <Footer />
+      <Hero />
+      <Marquee />
+      <Services />
+      <FeaturedWork />
+      <PhotoStrip photos={photos} />
+      <ContactCTA />
     </>
   );
 }

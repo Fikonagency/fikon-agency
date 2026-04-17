@@ -7,3 +7,6 @@ build
 next-env.d.ts
 *.log
 .vercel
+
+# Image originals are local-only — optimized versions (avif/webp) get committed.
+public/images/original/
