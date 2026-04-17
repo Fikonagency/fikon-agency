@@ -16,7 +16,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'sv_SE',
     url: 'https://fikonagency.se',
-    siteName: 'Fikon Agency'
+    siteName: 'Fikon Agency',
+    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Fikon Agency' }]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fikon Agency — Reklambyrå i Malmö',
+    description:
+      'Film, foto och identitet för varumärken som vill synas utan att skrika.',
+    images: ['/og.png']
   }
 };
 

@@ -6,7 +6,10 @@ export default function Hero() {
   const src = `https://player.vimeo.com/video/${HERO_VIMEO_ID}?background=1&autoplay=1&muted=1&loop=1&controls=0&dnt=1`;
 
   return (
-    <section id="top" className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-plommon">
+    <section
+      id="top"
+      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-plommon"
+    >
       <div className="absolute inset-0 pointer-events-none">
         <iframe
           src={src}
@@ -32,7 +35,7 @@ export default function Hero() {
           sizes="(min-width: 1024px) 720px, (min-width: 768px) 560px, 320px"
           className="w-[320px] md:w-[560px] lg:w-[720px] h-auto drop-shadow-[0_8px_32px_rgba(0,0,0,0.5)]"
         />
-        <p className="mt-10 md:mt-12 max-w-lg mx-auto text-cream font-display text-xl md:text-2xl leading-snug text-balance">
+        <p className="mt-8 md:mt-10 max-w-lg mx-auto text-cream font-display text-xl md:text-2xl leading-snug text-balance">
           Vi bygger varumärken som känns.
         </p>
         <Link
@@ -46,13 +49,10 @@ export default function Hero() {
         </Link>
       </div>
 
-      <a
-        href="#services"
-        aria-label="Scrolla"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-cream/50 text-[10px] tracking-[0.4em] uppercase hover:text-cream transition-colors"
-      >
-        Scrolla
-      </a>
+      <div
+        aria-hidden
+        className="absolute bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 h-10 w-px bg-gradient-to-b from-cream/0 via-cream/60 to-cream/0 animate-scroll-hint"
+      />
     </section>
   );
 }
