@@ -14,10 +14,10 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
 
   return (
     <>
-      <section id="arbeten" className="bg-plommon text-cream px-6 py-32 md:py-48">
+      <section id="arbeten" className="bg-cream text-plommon px-6 py-32 md:py-48">
         <div className="mx-auto max-w-[1400px]">
           <Reveal>
-            <p className="text-rose text-xs tracking-[0.3em] uppercase mb-4">Arbeten</p>
+            <p className="text-bordeaux text-xs tracking-[0.3em] uppercase mb-4">Arbeten</p>
             <h2 className="font-display text-display-lg mb-16 md:mb-24 text-balance">
               Ett urval av det vi gjort.
             </h2>
@@ -34,7 +34,7 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
           {rest.length > 0 && (
             <div className="mt-24 md:mt-32">
               <Reveal>
-                <p className="text-cream/50 text-xs tracking-[0.3em] uppercase mb-10">Mer</p>
+                <p className="text-plommon/50 text-xs tracking-[0.3em] uppercase mb-10">Mer</p>
               </Reveal>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 {rest.map((p, i) => (
@@ -73,9 +73,9 @@ function Card({
       onMouseLeave={() => setHover(false)}
       onFocus={() => setHover(true)}
       onBlur={() => setHover(false)}
-      className="group block text-left w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-rose"
+      className="group block text-left w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-bordeaux"
     >
-      <div className="relative aspect-video overflow-hidden bg-plommon ring-1 ring-cream/10">
+      <div className="relative aspect-video overflow-hidden bg-plommon ring-1 ring-plommon/10">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.thumb}
@@ -95,15 +95,15 @@ function Card({
 
       <div className="mt-5">
         <h3
-          className={`font-display text-cream group-hover:text-rose transition-colors ${
+          className={`font-display text-plommon group-hover:text-bordeaux transition-colors ${
             large ? 'text-2xl md:text-3xl' : 'text-base md:text-lg'
           }`}
         >
           {project.title}
         </h3>
-        <p className="mt-1 text-cream/50 text-xs tracking-[0.2em] uppercase">
+        <p className="mt-1 text-plommon/50 text-xs tracking-[0.2em] uppercase">
           {project.client === 'TBD' ? '—' : project.client}
-          <span className="ml-3 text-caramel/70">{project.year}</span>
+          <span className="ml-3 text-caramel">{project.year}</span>
         </p>
       </div>
     </button>

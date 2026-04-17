@@ -15,16 +15,16 @@ export default function Hero() {
         />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-plommon/40 via-transparent to-plommon pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-plommon/70 via-plommon/30 to-plommon pointer-events-none" />
 
       <div className="relative h-full flex flex-col items-center justify-center text-center px-6">
         <Image
-          src="/brand/fikon-white.png"
+          src="/brand/fikon-wordmark.png"
           alt="Fikon Agency"
           width={900}
           height={260}
           priority
-          className="w-[280px] md:w-[460px] lg:w-[560px] h-auto"
+          className="w-[280px] md:w-[460px] lg:w-[560px] h-auto drop-shadow-[0_6px_28px_rgba(0,0,0,0.55)]"
         />
         <p className="mt-8 text-cream/80 text-sm md:text-base tracking-[0.2em] uppercase">
           Film · Foto · Identitet
