@@ -10,3 +10,6 @@ next-env.d.ts
 
 # Image originals are local-only — optimized versions (avif/webp) get committed.
 public/images/original/
+
+# TS build info
+tsconfig.tsbuildinfo

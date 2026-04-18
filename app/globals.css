@@ -8,20 +8,28 @@ body {
 }
 
 body {
-  background: #f0e0cc;
-  color: #631a28;
+  background: #f2e0be;
+  color: #2a1318;
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
-  background: #7a1c2e;
-  color: #f0e0cc;
+  background: #7a2330;
+  color: #f2e0be;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -26,13 +26,13 @@ export default function VideoLightbox({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-[100] bg-plommon/95 backdrop-blur flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-300"
+      className="fixed inset-0 z-[100] bg-cream/95 flex items-center justify-center p-4 md:p-12 animate-in fade-in duration-300"
       onClick={onClose}
     >
       <button
         type="button"
         onClick={onClose}
-        className="absolute top-6 right-6 text-cream/60 hover:text-cream text-xs tracking-[0.3em] uppercase"
+        className="absolute top-6 right-6 text-plommon/60 hover:text-plommon text-xs tracking-[0.3em] uppercase"
       >
         Stäng · ESC
       </button>

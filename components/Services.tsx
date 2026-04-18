@@ -11,7 +11,7 @@ export default function Services() {
       <FigDecor variant="plommon" count={3} />
       <div className="relative mx-auto max-w-[1400px]">
         <Reveal>
-          <p className="text-bordeaux text-xs tracking-[0.3em] uppercase mb-4">Vad vi gör</p>
+          <p className="text-rose text-xs tracking-[0.3em] uppercase mb-4">Vad vi gör</p>
           <h2 className="font-display text-display-lg mb-20 md:mb-28 text-balance max-w-3xl">
             En reklambyrå.{' '}
             <span className="italic">Från idé till färdig film.</span>
@@ -22,7 +22,7 @@ export default function Services() {
           {services.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.05}>
               <li className="border-t border-plommon/10 py-10 md:py-14 flex items-start gap-6">
-                <span className="font-display text-sm text-caramel mt-2 tabular-nums">
+                <span className="font-display text-sm text-rose mt-2 tabular-nums">
                   0{i + 1}
                 </span>
                 <div className="flex-1">

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Reveal from './Reveal';
-import { projects } from '@/lib/data';
+import { projects, photos } from '@/lib/data';
+import FeaturedScroller, { type GalleryItem } from './FeaturedScroller';
 
 async function getThumb(vimeoId: string): Promise<string> {
   try {
@@ -16,72 +17,88 @@ async function getThumb(vimeoId: string): Promise<string> {
   return `https://vumbnail.com/${vimeoId}.jpg`;
 }
 
+const ASPECT_POOL: GalleryItem['aspect'][] = [
+  'portrait',
+  'landscape',
+  'square',
+  'portrait',
+  'landscape',
+  'portrait'
+];
+
 export default async function FeaturedWork() {
-  const featured = projects.filter((p) => p.featured).slice(0, 3);
+  const featured = projects.filter((p) => p.featured);
   const withThumbs = await Promise.all(
-    featured.map(async (p) => ({ ...p, thumb: await getThumb(p.vimeoId) }))
+    featured.map(async (p) => ({
+      ...p,
+      thumb: await getThumb(p.vimeoId)
+    }))
   );
 
+  // Build ribbon: all photos + thumbnails interleaved, plus photos again so the loop feels deep.
+  const items: GalleryItem[] = [];
+  let ap = 0;
+  const nextAspect = (): GalleryItem['aspect'] => ASPECT_POOL[ap++ % ASPECT_POOL.length];
+
+  withThumbs.forEach((p, i) => {
+    items.push({
+      kind: 'video',
+      id: `v-${p.id}`,
+      href: `/portfolio/${p.id}`,
+      src: p.thumb,
+      aspect: p.kind === 'social' ? 'portrait' : 'landscape'
+    });
+    const a = photos[i % photos.length];
+    items.push({ kind: 'photo', id: `ph-${i}-a-${a}`, src: `/images/${a}-1600.webp`, aspect: nextAspect() });
+    const b = photos[(i + 3) % photos.length];
+    items.push({ kind: 'photo', id: `ph-${i}-b-${b}`, src: `/images/${b}-1600.webp`, aspect: nextAspect() });
+  });
+  // Tail: full shuffle of all photos so the ribbon has plenty to scan.
+  photos.forEach((p, i) => {
+    items.push({ kind: 'photo', id: `ph-tail-${i}-${p}`, src: `/images/${p}-1600.webp`, aspect: nextAspect() });
+  });
+  photos.forEach((p, i) => {
+    items.push({ kind: 'photo', id: `ph-tail2-${i}-${p}`, src: `/images/${p}-2400.webp`, aspect: nextAspect() });
+  });
+
   return (
-    <section className="bg-cream text-plommon px-6 py-32 md:py-48 border-t border-plommon/10">
-      <div className="mx-auto max-w-[1400px]">
+    <section className="bg-cream text-plommon py-28 md:py-36 border-t border-plommon/10">
+      <div className="mx-auto max-w-[1500px] px-6 md:px-10">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-16 md:mb-20">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10 md:mb-14">
             <div>
-              <p className="text-bordeaux text-xs tracking-[0.3em] uppercase mb-4">Utvalt</p>
+              <p className="text-rose text-xs tracking-[0.3em] uppercase mb-4">
+                Ögonblick
+              </p>
               <h2 className="font-display text-display-lg text-balance max-w-2xl">
-                Det senaste från studion.
+                Stillbilder <span className="italic">från jobbet.</span>
               </h2>
             </div>
             <Link
-              href="/arbeten"
+              href="/portfolio"
               className="hidden md:inline-flex items-center gap-3 text-plommon font-display text-base hover:text-bordeaux transition-colors group shrink-0"
             >
-              <span className="underline underline-offset-8 decoration-plommon/30 group-hover:decoration-bordeaux">
-                Se alla arbeten
+              <span className="underline underline-offset-8 decoration-plommon/30 group-hover:decoration-rose">
+                Hela portfolion
               </span>
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </Link>
           </div>
         </Reveal>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
-          {withThumbs.map((p, i) => (
-            <Reveal key={p.id} delay={i * 0.08}>
-              <Link href="/arbeten" className="group block">
-                <div className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-plommon">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={p.thumb}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
-                  />
-                </div>
-                <div className="mt-5">
-                  <h3 className="font-display text-xl md:text-2xl group-hover:text-bordeaux transition-colors">
-                    {p.title}
-                  </h3>
-                  <p className="mt-1 text-plommon/50 text-xs tracking-[0.2em] uppercase">
-                    {p.client}
-                    <span className="ml-2 text-caramel">{p.year}</span>
-                  </p>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
+      <FeaturedScroller items={items} />
 
-        <div className="mt-12 md:hidden text-center">
-          <Link
-            href="/arbeten"
-            className="inline-flex items-center gap-3 text-plommon font-display text-base hover:text-bordeaux transition-colors group"
-          >
-            <span className="underline underline-offset-8 decoration-plommon/30">
-              Se alla arbeten
-            </span>
-            <span className="transition-transform group-hover:translate-x-1">→</span>
-          </Link>
-        </div>
+      <div className="mt-10 md:hidden text-center">
+        <Link
+          href="/portfolio"
+          className="inline-flex items-center gap-3 text-plommon font-display text-base hover:text-bordeaux transition-colors group"
+        >
+          <span className="underline underline-offset-8 decoration-plommon/30">
+            Hela portfolion
+          </span>
+          <span className="transition-transform group-hover:translate-x-1">→</span>
+        </Link>
       </div>
     </section>
   );

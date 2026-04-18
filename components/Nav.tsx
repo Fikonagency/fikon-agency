@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Nav() {
@@ -15,71 +14,63 @@ export default function Nav() {
       setScrolled(true);
       return;
     }
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 120);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, [isHome]);
 
-  const dark = scrolled;
-
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${
-        dark
-          ? 'bg-cream/92 backdrop-blur-md border-b border-plommon/5'
-          : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-40 h-16 md:h-20 transition-[background-color,border-color] duration-500 ${
+        scrolled
+          ? 'bg-cream border-b border-plommon/10'
+          : 'bg-cream/0 border-b border-transparent'
       }`}
     >
-      <div className="mx-auto max-w-[1500px] px-6 md:px-10 h-24 md:h-28 flex items-center justify-between">
+      <div className="mx-auto max-w-[1500px] h-full pl-3 pr-6 md:pl-4 md:pr-10 flex items-center justify-between">
         <Link
           href="/"
           aria-label="Fikon Agency"
-          className="relative block w-14 h-14 md:w-20 md:h-20 shrink-0"
+          className={`relative block shrink-0 transition-opacity duration-500 ${
+            isHome && !scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+          style={{ width: 52, height: 52 }}
         >
-          <Image
-            src="/brand/fikon-fig.png"
-            alt="Fikon Agency"
-            fill
-            priority
-            sizes="80px"
-            className={`object-contain transition-opacity duration-300 ${
-              dark ? 'opacity-0' : 'opacity-100'
-            }`}
-          />
-          <Image
-            src="/brand/fikon-fig-plommon.png"
-            alt=""
+          <span
             aria-hidden
-            fill
-            priority
-            sizes="80px"
-            className={`object-contain transition-opacity duration-300 ${
-              dark ? 'opacity-100' : 'opacity-0'
-            }`}
+            className="block w-full h-full bg-plommon"
+            style={{
+              WebkitMaskImage: "url('/brand/fikon-fig.png')",
+              maskImage: "url('/brand/fikon-fig.png')",
+              WebkitMaskSize: 'contain',
+              maskSize: 'contain',
+              WebkitMaskRepeat: 'no-repeat',
+              maskRepeat: 'no-repeat',
+              WebkitMaskPosition: 'center',
+              maskPosition: 'center'
+            }}
           />
         </Link>
         <ul
-          className={`flex items-center gap-6 md:gap-10 text-sm tracking-wide transition-colors duration-300 ${
-            dark ? 'text-plommon/70' : 'text-cream/80'
+          className={`flex items-center gap-6 md:gap-10 text-sm tracking-wide transition-colors duration-500 ${
+            scrolled
+              ? 'text-plommon/75'
+              : 'text-cream/90 [text-shadow:0_2px_8px_rgba(42,19,24,0.5)]'
           }`}
         >
           <li>
             <Link
-              href="/arbeten"
-              className={`transition-colors ${
-                dark ? 'hover:text-plommon' : 'hover:text-cream'
-              }`}
+              href="/portfolio"
+              className={`transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
-              Arbeten
+              Portfolio
             </Link>
           </li>
           <li>
             <Link
               href="/om"
-              className={`transition-colors ${
-                dark ? 'hover:text-plommon' : 'hover:text-cream'
-              }`}
+              className={`transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
               Om
             </Link>
@@ -87,9 +78,7 @@ export default function Nav() {
           <li>
             <Link
               href="/kontakt"
-              className={`transition-colors ${
-                dark ? 'hover:text-plommon' : 'hover:text-cream'
-              }`}
+              className={`transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
               Kontakt
             </Link>

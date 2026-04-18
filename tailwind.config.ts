@@ -5,11 +5,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        plommon: '#631A28',
-        bordeaux: '#7A1C2E',
-        rose: '#C0888E',
-        cream: '#F0E0CC',
-        caramel: '#A0673A'
+        plommon: '#2A1318',
+        bordeaux: '#7A2330',
+        rose: '#C3808D',
+        cream: '#F2E0BE',
+        caramel: '#7A2330'
       },
       fontFamily: {
         display: ['var(--font-display)', 'Georgia', 'serif'],
@@ -24,10 +24,15 @@ const config: Config = {
         'scroll-hint': {
           '0%, 100%': { transform: 'translateY(0)', opacity: '0.3' },
           '50%': { transform: 'translateY(8px)', opacity: '0.8' }
+        },
+        'flash-in': {
+          '0%': { opacity: '0', transform: 'scale(1.04)' },
+          '100%': { opacity: '1', transform: 'scale(1)' }
         }
       },
       animation: {
-        'scroll-hint': 'scroll-hint 2.8s ease-in-out infinite'
+        'scroll-hint': 'scroll-hint 2.8s ease-in-out infinite',
+        'flash-in': 'flash-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both'
       }
     }
   },
