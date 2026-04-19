@@ -3,7 +3,7 @@ import AboutIntro from '@/components/AboutIntro';
 import Clients from '@/components/Clients';
 
 export const metadata = {
-  title: 'Om — Fikon Agency',
+  title: 'Om oss — Fikon Agency',
   description: 'Fikon är Zana och Mirna — reklambyrå i Malmö.'
 };
 

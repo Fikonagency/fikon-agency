@@ -24,7 +24,6 @@ export default function CaseFlash({
 
   useEffect(() => {
     if (reduce) {
-      // Skip the strobe entirely — go straight to the case page.
       const t = setTimeout(() => setDone(true), 200);
       return () => clearTimeout(t);
     }
@@ -49,22 +48,28 @@ export default function CaseFlash({
           exit={{ opacity: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
+          {/* Preload first frame eagerly, rest lazy — but keep every frame mounted at opacity 1 once shown,
+              stacked by index so the current frame is always on top. No bordeaux gap between snaps. */}
           {frames.map((name, i) => (
             <div
               key={name + i}
-              className="absolute inset-0 transition-opacity duration-[500ms]"
-              style={{ opacity: i === frame ? 1 : 0 }}
+              className="absolute inset-0"
+              style={{
+                opacity: i <= frame ? 1 : 0,
+                zIndex: i
+              }}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/images/${name}-1600.webp`}
                 alt=""
                 className="absolute inset-0 w-full h-full object-cover"
+                fetchPriority={i < 2 ? 'high' : 'auto'}
               />
               <div className="absolute inset-0 bg-plommon/35" />
             </div>
           ))}
-          <div className="relative z-10 h-full w-full flex items-center justify-center px-6">
+          <div className="relative z-[100] h-full w-full flex items-center justify-center px-6">
             <div className="text-center">
               <p className="text-cream/85 text-[10px] md:text-xs tracking-[0.5em] uppercase mb-6">
                 Fikon Agency

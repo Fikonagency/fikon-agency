@@ -72,7 +72,7 @@ export default function Nav() {
               href="/om"
               className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
-              Om
+              Om oss
             </Link>
           </li>
           <li>

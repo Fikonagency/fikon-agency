@@ -33,21 +33,14 @@ export default function Footer() {
 
         <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs tracking-[0.2em] uppercase text-plommon/65">
           <li>
-            <Link href="/portfolio" className="hover:text-bordeaux transition-colors">
-              Portfolio
-            </Link>
-          </li>
-          <li aria-hidden className="text-rose">·</li>
-          <li>
-            <Link href="/om" className="hover:text-bordeaux transition-colors">
-              Om
-            </Link>
-          </li>
-          <li aria-hidden className="text-rose">·</li>
-          <li>
-            <Link href="/kontakt" className="hover:text-bordeaux transition-colors">
-              Kontakt
-            </Link>
+            <a
+              href={contact.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-bordeaux transition-colors"
+            >
+              Instagram
+            </a>
           </li>
           <li aria-hidden className="text-rose">·</li>
           <li>
@@ -61,34 +54,12 @@ export default function Footer() {
           <li aria-hidden className="text-rose">·</li>
           <li>
             <a
-              href={contact.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-bordeaux transition-colors"
-            >
-              Instagram
-            </a>
-          </li>
-          <li aria-hidden className="text-rose">·</li>
-          <li>
-            <a
               href={contact.linkedin}
               target="_blank"
               rel="noreferrer"
               className="hover:text-bordeaux transition-colors"
             >
               LinkedIn
-            </a>
-          </li>
-          <li aria-hidden className="text-rose">·</li>
-          <li>
-            <a
-              href={contact.vimeo}
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-bordeaux transition-colors"
-            >
-              Vimeo
             </a>
           </li>
         </ul>

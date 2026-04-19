@@ -83,11 +83,11 @@ export const projects: Project[] = [
     ]
   },
   {
-    id: 'spexbusters',
+    id: 's-t-petri',
     vimeoId: '1143377647',
     vimeoHash: '8b830dffe3',
-    title: 'Spexbusters',
-    client: 'Spexbusters',
+    title: 'S:t Petri',
+    client: 'S:t Petri gymnasie · Malmö',
     year: 2026,
     kind: 'film',
     featured: true,
@@ -102,7 +102,7 @@ export const projects: Project[] = [
       'spexbusters-035','spexbusters-036','spexbusters-037','spexbusters-038',
       'spexbusters-039','spexbusters-040'
     ],
-    intro: 'Kortfilm för Spexbusters — S:t Petri gymnasie, Malmö. Regi, film och efterarbete.',
+    intro: 'Kortfilm för S:t Petri gymnasie i Malmö. Regi, film och efterarbete.',
     meta: [
       { label: 'Klient', value: 'S:t Petri gymnasie · Malmö' },
       { label: 'Format', value: 'Kortfilm' },
@@ -192,22 +192,40 @@ export const services: Service[] = [
   }
 ];
 
-export type TeamMember = { slug: 'zana' | 'mirna'; name: string; role: string; email: string };
+export type TeamMember = {
+  slug: 'zana' | 'mirna';
+  name: string;
+  role: string;
+  email: string;
+  /** Photo basename under /public/images/ (without size/extension). */
+  portrait: string;
+  /** Detailed craft list shown in the pitch. */
+  craft: string[];
+};
 
 export const team: TeamMember[] = [
   {
     slug: 'zana',
     name: 'Zana Salman',
     role: 'Co-founder · Film, foto, regi',
-    email: 'zana@fikonagency.se'
+    email: 'zana@fikonagency.se',
+    portrait: 'zana-portrait',
+    craft: ['Videograf, fotograf', 'Creative direction', 'Grafisk design']
   },
   {
     slug: 'mirna',
-    name: 'Mirna',
+    name: 'Mirna Dirawi',
     role: 'Co-founder · Strategi, sälj, digital',
-    email: 'mirna@fikonagency.se'
+    email: 'mirna@fikonagency.se',
+    portrait: 'mirna-portrait',
+    craft: ['Strategi & sälj', 'Brand identity', 'Digital analys & SEO']
   }
 ];
+
+/** BTS image basenames under /public/images/ — used to frame the team portraits. */
+export const btsPhotos: string[] = Array.from({ length: 17 }, (_, i) =>
+  `bts-${String(i + 1).padStart(2, '0')}`
+);
 
 export const clients: string[] = [
   'Flawlessface Clinic',
