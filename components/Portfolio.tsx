@@ -1,10 +1,11 @@
 import { projects } from '@/lib/data';
 import PortfolioClient, { type EnrichedProject } from './PortfolioClient';
 
-async function getThumb(vimeoId: string): Promise<string> {
+async function getThumb(vimeoId: string, vimeoHash?: string): Promise<string> {
+  const url = vimeoHash ? `https://vimeo.com/${vimeoId}/${vimeoHash}` : `https://vimeo.com/${vimeoId}`;
   try {
     const res = await fetch(
-      `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoId}&width=1280`,
+      `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(url)}&width=1280`,
       { next: { revalidate: 86400 } }
     );
     if (res.ok) {
@@ -18,8 +19,9 @@ async function getThumb(vimeoId: string): Promise<string> {
 }
 
 export default async function Portfolio() {
+  const visible = projects.filter((p) => p.listed !== false);
   const enriched: EnrichedProject[] = await Promise.all(
-    projects.map(async (p) => ({ ...p, thumb: await getThumb(p.vimeoId) }))
+    visible.map(async (p) => ({ ...p, thumb: await getThumb(p.vimeoId, p.vimeoHash) }))
   );
   return <PortfolioClient projects={enriched} />;
 }

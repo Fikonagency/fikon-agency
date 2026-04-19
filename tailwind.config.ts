@@ -8,8 +8,7 @@ const config: Config = {
         plommon: '#2A1318',
         bordeaux: '#7A2330',
         rose: '#C3808D',
-        cream: '#F2E0BE',
-        caramel: '#7A2330'
+        cream: '#F2E0BE'
       },
       fontFamily: {
         display: ['var(--font-display)', 'Georgia', 'serif'],

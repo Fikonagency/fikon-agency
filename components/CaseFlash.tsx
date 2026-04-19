@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { photos as ALL_PHOTOS } from '@/lib/data';
 
 export default function CaseFlash({
@@ -11,11 +11,10 @@ export default function CaseFlash({
   title: string;
   images: string[];
 }) {
+  const reduce = useReducedMotion();
   const [frame, setFrame] = useState(0);
   const [done, setDone] = useState(false);
 
-  // Start with project gallery images, then pad with the wider photo pool
-  // (minus duplicates) so the flash feels longer and more varied.
   const extras = ALL_PHOTOS.filter((p) => !images.includes(p));
   const frames =
     images.length > 0 ? [...images, ...images, ...extras].slice(0, 14) : extras.slice(0, 10);
@@ -24,18 +23,22 @@ export default function CaseFlash({
   const lastFrameHold = 1000;
 
   useEffect(() => {
+    if (reduce) {
+      // Skip the strobe entirely — go straight to the case page.
+      const t = setTimeout(() => setDone(true), 200);
+      return () => clearTimeout(t);
+    }
     if (frames.length === 0) {
       const t = setTimeout(() => setDone(true), 900);
       return () => clearTimeout(t);
     }
-    // Hold the very last frame for a beat, then trigger exit.
     if (frame === frames.length - 1) {
       const t = setTimeout(() => setDone(true), lastFrameHold);
       return () => clearTimeout(t);
     }
     const t = setTimeout(() => setFrame((f) => f + 1), flashDuration);
     return () => clearTimeout(t);
-  }, [frame, frames.length]);
+  }, [frame, frames.length, reduce]);
 
   return (
     <AnimatePresence>

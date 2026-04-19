@@ -1,4 +1,3 @@
-import AboutHero from '@/components/AboutHero';
 import TeamCards from '@/components/TeamCards';
 import AboutIntro from '@/components/AboutIntro';
 import Clients from '@/components/Clients';
@@ -11,7 +10,6 @@ export const metadata = {
 export default function OmPage() {
   return (
     <>
-      <AboutHero />
       <TeamCards />
       <AboutIntro />
       <Clients />

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 
 type Token = { word: string; color: 'plommon' | 'bordeaux' | 'rose' };
 
@@ -50,13 +50,14 @@ function Row() {
 }
 
 export default function Marquee() {
+  const reduce = useReducedMotion();
   return (
     <div className="relative bg-cream overflow-hidden py-6 md:py-8 border-y border-plommon/15">
       <motion.div
         className="flex whitespace-nowrap will-change-transform"
         style={{ WebkitMaskImage: EDGE_MASK, maskImage: EDGE_MASK }}
-        animate={{ x: ['0%', '-50%'] }}
-        transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}
+        animate={reduce ? { x: 0 } : { x: ['0%', '-50%'] }}
+        transition={reduce ? { duration: 0 } : { duration: 28, repeat: Infinity, ease: 'linear' }}
       >
         <Row />
         <Row />

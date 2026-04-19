@@ -53,7 +53,7 @@ export default function Footer() {
           <li>
             <a
               href={`mailto:${contact.email}`}
-              className="hover:text-bordeaux transition-colors normal-case tracking-normal"
+              className="hover:text-bordeaux transition-colors normal-case tracking-normal text-sm"
             >
               {contact.email}
             </a>

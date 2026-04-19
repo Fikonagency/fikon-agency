@@ -2,7 +2,7 @@ import Reveal from './Reveal';
 
 export default function AboutIntro() {
   return (
-    <section className="bg-cream text-plommon px-6 md:px-10 py-20 md:py-28 border-t border-plommon/15">
+    <section className="bg-cream text-plommon px-6 md:px-10 py-10 md:py-14 border-t border-plommon/15">
       <div className="mx-auto max-w-[1500px] grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
         <div className="md:col-span-5">
           <Reveal>

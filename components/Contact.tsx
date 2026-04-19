@@ -1,15 +1,6 @@
 import { contact } from '@/lib/data';
 import Reveal from './Reveal';
-
-const SERVICE_OPTIONS = [
-  'Film & reklamfilm',
-  'Foto & kampanjbilder',
-  'Branding & identitet',
-  'Social media / Paid',
-  'SEO & webb',
-  'Strategi / rådgivning',
-  'Annat'
-];
+import ContactForm from './ContactForm';
 
 export default function Contact() {
   return (
@@ -101,96 +92,11 @@ export default function Contact() {
 
           <div className="md:col-span-7">
             <Reveal>
-              <form
-                action={`mailto:${contact.email}`}
-                method="post"
-                encType="text/plain"
-                className="bg-cream ring-1 ring-plommon/15 p-6 md:p-10 space-y-6"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Field name="name" label="Namn" required />
-                  <Field name="company" label="Företag" />
-                  <Field name="email" label="Email" type="email" required />
-                  <Field name="phone" label="Telefon" type="tel" />
-                </div>
-                <label className="block">
-                  <span className="block text-rose text-[10px] tracking-[0.3em] uppercase mb-2">
-                    Typ av projekt
-                  </span>
-                  <select
-                    name="service"
-                    className="w-full bg-transparent border-b border-plommon/30 py-3 text-plommon focus:outline-none focus:border-bordeaux"
-                    defaultValue=""
-                  >
-                    <option value="" disabled>
-                      Välj …
-                    </option>
-                    {SERVICE_OPTIONS.map((s) => (
-                      <option key={s} value={s}>
-                        {s}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label className="block">
-                  <span className="block text-rose text-[10px] tracking-[0.3em] uppercase mb-2">
-                    Kort om vad ni vill göra
-                  </span>
-                  <textarea
-                    name="message"
-                    rows={5}
-                    className="w-full bg-transparent border-b border-plommon/30 py-3 text-plommon resize-y focus:outline-none focus:border-bordeaux"
-                  />
-                </label>
-                <button
-                  type="submit"
-                  className="inline-flex items-center gap-3 px-8 py-3 bg-plommon text-cream font-display text-lg hover:bg-bordeaux transition-colors"
-                >
-                  Skicka
-                  <span aria-hidden>→</span>
-                </button>
-                <p className="text-xs text-plommon/55">
-                  Formuläret öppnar din mejlklient. Föredrar du att skriva direkt — mejla{' '}
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="underline decoration-rose underline-offset-4"
-                  >
-                    {contact.email}
-                  </a>
-                  .
-                </p>
-              </form>
+              <ContactForm />
             </Reveal>
           </div>
         </div>
       </section>
     </>
-  );
-}
-
-function Field({
-  name,
-  label,
-  type = 'text',
-  required
-}: {
-  name: string;
-  label: string;
-  type?: string;
-  required?: boolean;
-}) {
-  return (
-    <label className="block">
-      <span className="block text-rose text-[10px] tracking-[0.3em] uppercase mb-2">
-        {label}
-        {required && <span aria-hidden> *</span>}
-      </span>
-      <input
-        type={type}
-        name={name}
-        required={required}
-        className="w-full bg-transparent border-b border-plommon/30 py-3 text-plommon focus:outline-none focus:border-bordeaux"
-      />
-    </label>
   );
 }

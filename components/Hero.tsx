@@ -56,8 +56,8 @@ export default function Hero() {
         </picture>
       </motion.div>
 
-      {/* 15% darker overlay on the image */}
-      <div aria-hidden className="absolute inset-0 bg-plommon/[0.15] pointer-events-none" />
+      {/* Darker overlay so nav links and bottom captions hold contrast (WCAG AA) over the image */}
+      <div aria-hidden className="absolute inset-0 bg-plommon/30 pointer-events-none" />
 
       {/* Subtle bottom fade to cream so the wordmark never crashes into the section edge */}
       <div
@@ -93,16 +93,14 @@ export default function Hero() {
       </motion.div>
 
       <div className="absolute bottom-8 left-4 md:left-8 right-4 md:right-8 flex items-end justify-between gap-6 pointer-events-none">
-        <p className="text-plommon/80 text-[10px] md:text-xs tracking-[0.4em] uppercase">
+        <p className="text-cream/85 text-[10px] md:text-xs tracking-[0.4em] uppercase [text-shadow:0_2px_10px_rgba(42,19,24,0.7)]">
           Reklambyrå · Malmö
         </p>
         <Link
           href="/portfolio"
-          className="pointer-events-auto inline-flex items-center gap-3 text-plommon font-display text-sm md:text-base hover:text-bordeaux transition-colors group"
+          className="pointer-events-auto inline-flex items-center gap-3 px-5 py-3 md:px-6 md:py-3.5 bg-cream text-plommon font-display text-sm md:text-base hover:bg-rose transition-colors group shadow-[0_10px_40px_-12px_rgba(42,19,24,0.6)]"
         >
-          <span className="underline underline-offset-8 decoration-plommon/30 group-hover:decoration-rose">
-            Se portfolion
-          </span>
+          <span>Se portfolion</span>
           <span className="transition-transform group-hover:translate-x-1">→</span>
         </Link>
       </div>

@@ -3,10 +3,11 @@ import Reveal from './Reveal';
 import { projects, photos } from '@/lib/data';
 import FeaturedScroller, { type GalleryItem } from './FeaturedScroller';
 
-async function getThumb(vimeoId: string): Promise<string> {
+async function getThumb(vimeoId: string, vimeoHash?: string): Promise<string> {
+  const url = vimeoHash ? `https://vimeo.com/${vimeoId}/${vimeoHash}` : `https://vimeo.com/${vimeoId}`;
   try {
     const res = await fetch(
-      `https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoId}&width=1280`,
+      `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(url)}&width=1280`,
       { next: { revalidate: 86400 } }
     );
     if (res.ok) {
@@ -31,7 +32,7 @@ export default async function FeaturedWork() {
   const withThumbs = await Promise.all(
     featured.map(async (p) => ({
       ...p,
-      thumb: await getThumb(p.vimeoId)
+      thumb: await getThumb(p.vimeoId, p.vimeoHash)
     }))
   );
 
@@ -62,10 +63,10 @@ export default async function FeaturedWork() {
   });
 
   return (
-    <section className="bg-cream text-plommon py-28 md:py-36 border-t border-plommon/10">
+    <section className="bg-cream text-plommon py-14 md:py-20 border-t border-plommon/10">
       <div className="mx-auto max-w-[1500px] px-6 md:px-10">
         <Reveal>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-10 md:mb-14">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-6 md:mb-8">
             <div>
               <p className="text-rose text-xs tracking-[0.3em] uppercase mb-4">
                 Ögonblick

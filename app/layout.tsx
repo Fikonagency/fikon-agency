@@ -36,8 +36,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="sv" className={`${fraunces.variable} ${poppins.variable}`}>
       <body>
+        <a
+          href="#main"
+          className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-4 focus-visible:left-4 focus-visible:z-[100] focus-visible:bg-plommon focus-visible:text-cream focus-visible:px-4 focus-visible:py-2 focus-visible:font-display"
+        >
+          Hoppa till innehåll
+        </a>
         <Nav />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

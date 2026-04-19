@@ -7,7 +7,7 @@ export default function CaseGallery({ project }: { project: Project }) {
   const idx = projects.findIndex((p) => p.id === project.id);
   const next = projects[(idx + 1) % projects.length];
   const gallery = project.gallery ?? [];
-  const vimeoSrc = `https://player.vimeo.com/video/${project.vimeoId}?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&dnt=1`;
+  const vimeoSrc = `https://player.vimeo.com/video/${project.vimeoId}?${project.vimeoHash ? `h=${project.vimeoHash}&` : ''}autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&dnt=1`;
 
   return (
     <article className="bg-cream text-plommon animate-flash-in">
@@ -49,6 +49,32 @@ export default function CaseGallery({ project }: { project: Project }) {
         </div>
       </section>
 
+      {project.extraVideos && project.extraVideos.length > 0 && (
+        <section className="px-6 md:px-10 mx-auto max-w-[1500px] pt-6 md:pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {project.extraVideos.map((v, i) => (
+              <Reveal key={v.vimeoId} delay={Math.min(i * 0.05, 0.2)}>
+                <div className="relative aspect-video w-full overflow-hidden bg-plommon ring-1 ring-plommon/10">
+                  <iframe
+                    src={`https://player.vimeo.com/video/${v.vimeoId}?${v.vimeoHash ? `h=${v.vimeoHash}&` : ''}title=0&byline=0&portrait=0&dnt=1`}
+                    title={v.title ?? `${project.title} — video ${i + 2}`}
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowFullScreen
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+                {v.title && (
+                  <p className="mt-3 text-rose text-[10px] tracking-[0.3em] uppercase">
+                    {v.title}
+                  </p>
+                )}
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      )}
+
       {gallery.length > 0 && (
         <section className="px-6 md:px-10 mx-auto max-w-[1500px] py-20 md:py-28">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-8">
@@ -78,7 +104,7 @@ export default function CaseGallery({ project }: { project: Project }) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={`/images/${name}-1600.webp`}
-                        alt=""
+                        alt={`${project.title} — bild ${i + 1} av ${gallery.length}`}
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover"
                       />

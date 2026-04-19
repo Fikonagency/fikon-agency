@@ -53,16 +53,16 @@ export default function Nav() {
           />
         </Link>
         <ul
-          className={`flex items-center gap-6 md:gap-10 text-sm tracking-wide transition-colors duration-500 ${
+          className={`flex items-center gap-2 md:gap-6 text-sm tracking-wide transition-colors duration-500 ${
             scrolled
               ? 'text-plommon/75'
-              : 'text-cream/90 [text-shadow:0_2px_8px_rgba(42,19,24,0.5)]'
+              : 'text-cream/95 [text-shadow:0_2px_10px_rgba(42,19,24,0.7)]'
           }`}
         >
           <li>
             <Link
               href="/portfolio"
-              className={`transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
+              className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
               Portfolio
             </Link>
@@ -70,7 +70,7 @@ export default function Nav() {
           <li>
             <Link
               href="/om"
-              className={`transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
+              className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
               Om
             </Link>
@@ -78,7 +78,7 @@ export default function Nav() {
           <li>
             <Link
               href="/kontakt"
-              className={`transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
+              className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
             >
               Kontakt
             </Link>

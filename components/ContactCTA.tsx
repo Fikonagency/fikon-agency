@@ -6,7 +6,7 @@ const BG = '0Y9A0495';
 export default function ContactCTA() {
   return (
     <section className="relative bg-cream text-plommon overflow-hidden border-t border-plommon/15">
-      <div className="relative mx-auto max-w-[1500px] px-6 md:px-10 py-28 md:py-44">
+      <div className="relative mx-auto max-w-[1500px] px-6 md:px-10 py-14 md:py-24">
         {/* Framed/cut background image: bordered rectangle with fig-shaped holes punched out of the dark overlay */}
         <div
           aria-hidden
@@ -78,7 +78,7 @@ export default function ContactCTA() {
           />
         </div>
 
-        <div className="relative py-24 md:py-36 text-center">
+        <div className="relative py-12 md:py-20 text-center">
           <Reveal>
             <p className="font-display italic text-rose text-2xl md:text-3xl mb-4 drop-shadow-[0_2px_14px_rgba(42,19,24,0.5)]">
               Hej.

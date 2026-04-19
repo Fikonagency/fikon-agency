@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import type { Project } from '@/lib/data';
 import Reveal from './Reveal';
@@ -9,7 +9,13 @@ export type EnrichedProject = Project & { thumb: string };
 
 export default function PortfolioClient({ projects }: { projects: EnrichedProject[] }) {
   const [hoverId, setHoverId] = useState<string | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hovered = projects.find((p) => p.id === hoverId) ?? null;
+
+  const setHover = (id: string | null) => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = setTimeout(() => setHoverId(id), id ? 40 : 120);
+  };
 
   return (
     <section id="portfolio" className="bg-cream text-plommon px-6 pt-40 md:pt-48 pb-32 md:pb-48">
@@ -23,7 +29,7 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
 
         <div
           className="relative hidden md:block"
-          onMouseLeave={() => setHoverId(null)}
+          onMouseLeave={() => setHover(null)}
         >
           <ul className="relative z-10">
             {projects.map((p, i) => (
@@ -31,8 +37,9 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
                 <Reveal delay={Math.min(i * 0.04, 0.3)}>
                   <Link
                     href={`/portfolio/${p.id}`}
-                    onMouseEnter={() => setHoverId(p.id)}
-                    onFocus={() => setHoverId(p.id)}
+                    onMouseEnter={() => setHover(p.id)}
+                    onFocus={() => setHover(p.id)}
+                    onBlur={() => setHover(null)}
                     className="group flex items-end justify-between gap-8 border-t border-plommon/15 py-6 md:py-8 transition-[padding] duration-300 hover:pl-6"
                   >
                     <div className="flex items-baseline gap-6 md:gap-10 min-w-0">
