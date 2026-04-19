@@ -3,7 +3,7 @@ import { readdir, mkdir, stat } from 'node:fs/promises';
 import { join, parse } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const SRC = fileURLToPath(new URL('../public/images/original/', import.meta.url));
+const SRC = fileURLToPath(new URL('../originals/', import.meta.url));
 const OUT = fileURLToPath(new URL('../public/images/', import.meta.url));
 const SIZES = [800, 1600, 2400];
 
