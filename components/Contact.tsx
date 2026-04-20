@@ -7,21 +7,19 @@ export default function Contact() {
     <>
       <section
         id="kontakt"
-        className="relative bg-cream text-plommon px-6 md:px-10 pt-40 md:pt-48 pb-16 md:pb-24"
+        className="relative bg-cream text-plommon px-6 md:px-10 pt-40 md:pt-48 pb-8 md:pb-16"
       >
         <div className="mx-auto max-w-[1500px]">
           <Reveal>
-            <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Kontakt</p>
-            <h1 className="font-display font-light text-display-xl text-balance max-w-[14ch] leading-[1.02]">
-              Frågor? <span className="text-rose font-normal">Slå oss en signal.</span>
-            </h1>
+            <p className="text-rose text-xs tracking-[0.4em] uppercase">Kontakt</p>
           </Reveal>
         </div>
       </section>
 
-      <section className="relative bg-cream text-plommon px-6 md:px-10 py-10 md:py-14">
+      <section className="relative bg-cream text-plommon px-6 md:px-10 py-6 md:py-14">
         <div className="mx-auto max-w-[1500px] grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
-          <div className="md:col-span-5 space-y-10">
+          {/* Info block — appears after form on mobile, left on desktop */}
+          <div className="order-2 md:order-none md:col-span-5 space-y-8 md:space-y-10">
             <Reveal>
               <div>
                 <p className="text-rose text-[10px] tracking-[0.3em] uppercase mb-3">
@@ -76,7 +74,8 @@ export default function Contact() {
             </Reveal>
           </div>
 
-          <div className="md:col-span-7">
+          {/* Form — first on mobile, right on desktop */}
+          <div className="order-1 md:order-none md:col-span-7">
             <Reveal>
               <ContactForm />
             </Reveal>

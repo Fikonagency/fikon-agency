@@ -61,7 +61,7 @@ export default function Footer() {
           </li>
         </ul>
 
-        <div className="mt-10 pt-6 border-t border-plommon/10 w-full max-w-md flex flex-col md:flex-row md:items-center justify-center gap-3 text-xs text-plommon/50 tracking-wide">
+        <div className="mt-10 pt-6 border-t border-plommon/10 w-full max-w-md flex flex-col items-center md:flex-row md:justify-center gap-2 md:gap-3 text-xs text-plommon/50 tracking-wide text-center">
           <p>© {new Date().getFullYear()} Fikon Agency</p>
           <span aria-hidden className="hidden md:inline text-rose">·</span>
           <p>Malmö · Sverige</p>

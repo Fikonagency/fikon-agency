@@ -91,7 +91,7 @@ export default function Hero() {
         </p>
       </motion.div>
 
-      <div className="absolute bottom-8 left-4 md:left-8 right-4 md:right-8 flex items-end justify-between gap-6 pointer-events-none">
+      <div className="absolute bottom-8 left-4 right-4 md:left-8 md:right-8 flex flex-col items-center gap-3 md:flex-row md:items-end md:justify-between md:gap-6 pointer-events-none">
         <p className="text-cream/85 text-[10px] md:text-xs tracking-[0.4em] uppercase [text-shadow:0_2px_10px_rgba(42,19,24,0.7)]">
           Reklambyrå · Malmö
         </p>

@@ -102,26 +102,31 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-cream text-plommon px-6 md:px-10 py-10 md:py-14">
+      <section className="bg-cream text-plommon px-6 md:px-10 py-6 md:py-14">
         <div className="mx-auto max-w-[1500px]">
           <ul className="border-t border-plommon/15">
             {SERVICES.map((s, i) => (
               <li key={s.anchor} id={s.anchor} className="scroll-mt-28">
                 <Reveal delay={Math.min(i * 0.04, 0.2)}>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 py-12 md:py-20 border-b border-plommon/15 items-center">
-                    <div className="md:col-span-1">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-10 py-6 md:py-20 border-b border-plommon/15 items-center">
+                    <div className="hidden md:block md:col-span-1">
                       <span className="font-display font-medium text-rose text-sm tabular-nums tracking-[0.2em]">
                         {s.number}
                       </span>
                     </div>
                     <div className="md:col-span-6">
-                      <h2 className="font-display font-light text-display-md md:text-display-lg leading-[1.05] text-balance">
+                      <div className="md:hidden">
+                        <span className="font-display font-medium text-rose text-xs tabular-nums tracking-[0.3em] mb-2 block">
+                          {s.number}
+                        </span>
+                      </div>
+                      <h2 className="font-display font-light text-2xl md:text-display-lg leading-[1.1] md:leading-[1.05] text-balance">
                         {s.title}
                       </h2>
-                      <p className="mt-5 md:mt-7 text-plommon/75 text-base md:text-lg leading-relaxed max-w-xl">
+                      <p className="mt-3 md:mt-7 text-plommon/75 text-sm md:text-lg leading-relaxed max-w-xl">
                         {s.lede}
                       </p>
-                      <ul className="mt-6 md:mt-8 grid grid-cols-2 gap-y-2 gap-x-6 text-sm text-plommon/70 max-w-md">
+                      <ul className="mt-4 md:mt-8 grid grid-cols-2 gap-y-2 gap-x-6 text-xs md:text-sm text-plommon/70 max-w-md">
                         {s.bullets.map((b) => (
                           <li key={b} className="flex items-start gap-2">
                             <span aria-hidden className="text-rose">·</span>
@@ -130,7 +135,7 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                     </div>
-                    <div className="md:col-span-5 flex justify-center md:justify-end">
+                    <div className="hidden md:flex md:col-span-5 justify-center md:justify-end">
                       <div className="relative w-full max-w-[280px] aspect-square flex items-center justify-center">
                         <ServiceSymbol
                           kind={s.anchor}
@@ -146,7 +151,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="bg-cream text-plommon px-6 md:px-10 py-16 md:py-28 border-t border-plommon/10">
+      <section className="bg-cream text-plommon px-6 md:px-10 py-14 md:py-28 mt-6 md:mt-0 border-t-[6px] md:border-t border-plommon/20 md:border-plommon/10">
         <div className="mx-auto max-w-[1500px]">
           <Reveal>
             <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5 text-center">Så jobbar vi</p>

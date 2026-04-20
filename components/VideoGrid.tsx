@@ -25,6 +25,7 @@ type VideoTile = {
   id: string;
   colClass: string;
   rowClass: string;
+  mobileOrder: number;
 };
 
 type ServiceTile = {
@@ -35,6 +36,22 @@ type ServiceTile = {
   title: string;
   blurb: string;
   anchor: Kind;
+  mobileOrder: number;
+};
+
+const MOBILE_ORDER_CLASSES: Record<number, string> = {
+  1:  'order-1 md:order-none',
+  2:  'order-2 md:order-none',
+  3:  'order-3 md:order-none',
+  4:  'order-4 md:order-none',
+  5:  'order-5 md:order-none',
+  6:  'order-6 md:order-none',
+  7:  'order-7 md:order-none',
+  8:  'order-8 md:order-none',
+  9:  'order-9 md:order-none',
+  10: 'order-10 md:order-none',
+  11: 'order-11 md:order-none',
+  12: 'order-12 md:order-none'
 };
 
 type Tile = VideoTile | ServiceTile;
@@ -55,44 +72,44 @@ type Tile = VideoTile | ServiceTile;
  *  r7: sigma-final (V,12)                     hero end
  */
 const LAYOUT: Tile[] = [
-  { kind: 'video',   id: 'gardinex',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
+  { kind: 'video',   id: 'gardinex',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3', mobileOrder: 1 },
 
   { kind: 'service', id: 's-strategi',               colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Strategi & varumärke',
     blurb:
       'Vi tar reda på var ni står, vart ni vill, och vad som faktiskt skiljer er från konkurrenterna. Sen översätter vi det till en riktning ni kan äga.',
-    anchor: 'strategi' },
-  { kind: 'video',   id: 'sigma-connectivity-event', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+    anchor: 'strategi', mobileOrder: 2 },
+  { kind: 'video',   id: 'sigma-connectivity-event', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 3 },
 
-  { kind: 'video',   id: 'flawlessface-clinic',      colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+  { kind: 'video',   id: 'flawlessface-clinic',      colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 5 },
   { kind: 'service', id: 's-brand-identity',         colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Brand identity',
     blurb:
       'Logotyp, färg, typografi och bildspråk som känns samlat i varje kanal. Vi bygger ett system som håller, inte bara enskilda ögonblicksverk.',
-    anchor: 'brand-identity' },
+    anchor: 'brand-identity', mobileOrder: 4 },
 
   { kind: 'service', id: 's-film-foto',              colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Film & foto',
     blurb:
       'Reklamfilm, kampanjbilder, produkt och event. Vi producerar själva, från storyboard till färdig leverans. Tempot blir högre och priset lägre.',
-    anchor: 'film-foto' },
-  { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+    anchor: 'film-foto', mobileOrder: 6 },
+  { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 7 },
 
-  { kind: 'video',   id: 's-t-petri',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+  { kind: 'video',   id: 's-t-petri',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 9 },
   { kind: 'service', id: 's-grafisk',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Grafisk design',
     blurb:
       'Trycksaker, presentationer och sales collateral. De vardagliga delarna av varumärket, designade med samma noggrannhet som kampanjerna.',
-    anchor: 'grafisk-design' },
+    anchor: 'grafisk-design', mobileOrder: 8 },
 
   { kind: 'service', id: 's-digital',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Digital närvaro',
     blurb:
       'Webb, SEO, paid social och analys. Vi bygger infrastrukturen så att det ni producerar faktiskt når fram, och mäter så ni vet vad som fungerar.',
-    anchor: 'digital' },
-  { kind: 'video',   id: 'sigma-connectivity-interview', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+    anchor: 'digital', mobileOrder: 10 },
+  { kind: 'video',   id: 'sigma-connectivity-interview', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 11 },
 
-  { kind: 'video',   id: 'p-1184231741',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' }
+  { kind: 'video',   id: 'p-1184231741',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3', mobileOrder: 12 }
 ];
 
 export default async function VideoGrid() {
@@ -138,7 +155,8 @@ export default async function VideoGrid() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 md:[grid-auto-rows:minmax(140px,auto)]">
           {visible.map((t, i) => {
             const isHero = t.colClass.includes('md:col-span-12');
-            const baseClasses = `${t.colClass} ${t.rowClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[340px]'}`;
+            const orderClass = MOBILE_ORDER_CLASSES[t.mobileOrder] || '';
+            const baseClasses = `${t.colClass} ${t.rowClass} ${orderClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[340px]'}`;
 
             if (t.kind === 'service') {
               return (

@@ -56,7 +56,7 @@ export default function ContactCTA() {
             }}
           />
           <span
-            className="absolute"
+            className="absolute hidden md:block"
             style={{
               right: '28%',
               top: '10%',
