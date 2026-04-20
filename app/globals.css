@@ -20,9 +20,9 @@ body {
   color: #f5f1e8;
 }
 
-img {
-  filter: brightness(0.9);
-}
+/* Previously had a global img { filter: brightness(0.9) } editorial tint.
+   Removed so portfolio case pages render photos at native brightness.
+   Hero and ContactCTA already apply their own stronger filters inline. */
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;

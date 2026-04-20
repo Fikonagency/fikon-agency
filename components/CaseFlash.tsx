@@ -17,9 +17,9 @@ export default function CaseFlash({
 
   const extras = ALL_PHOTOS.filter((p) => !images.includes(p));
   const frames =
-    images.length > 0 ? [...images, ...images, ...extras].slice(0, 14) : extras.slice(0, 10);
+    images.length > 0 ? [...images, ...images, ...extras].slice(0, 16) : extras.slice(0, 12);
 
-  const flashDuration = 130;
+  const flashDuration = 98;
   const lastFrameHold = 1000;
 
   useEffect(() => {
