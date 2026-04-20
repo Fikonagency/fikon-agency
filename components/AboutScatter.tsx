@@ -13,11 +13,11 @@ type Point = {
  * (Clients is rendered outside this section on /om, so the scatter
  * never intrudes on 'Arbetat med').
  *
- * Left column is dense (editorial strip of 9 images).
- * Right column is sparser (4 images) per user feedback.
+ * Balanced — 9 images on the left column, 8 on the right.
+ * All 17 BTS images used exactly once.
  */
 const SCATTER: Point[] = [
-  // LEFT column — dense editorial strip
+  // LEFT column (9)
   { src: 'bts-01', top: '1%',  left: '5%',  width: '12%', rotate: -4 },
   { src: 'bts-03', top: '12%', left: '4%',  width: '10%', rotate: 5,  hideBelow: 'lg' },
   { src: 'bts-07', top: '22%', left: '5%',  width: '11%', rotate: 3 },
@@ -28,11 +28,15 @@ const SCATTER: Point[] = [
   { src: 'bts-10', top: '82%', left: '4%',  width: '13%', rotate: 4,  hideBelow: 'lg' },
   { src: 'bts-17', top: '93%', left: '5%',  width: '11%', rotate: 3 },
 
-  // RIGHT column — sparser, only four images with clear gaps
+  // RIGHT column (8)
   { src: 'bts-06', top: '4%',  right: '5%', width: '11%', rotate: 3 },
-  { src: 'bts-13', top: '30%', right: '5%', width: '13%', rotate: 4 },
-  { src: 'bts-16', top: '58%', right: '5%', width: '12%', rotate: -5 },
-  { src: 'bts-12', top: '85%', right: '4%', width: '12%', rotate: -3, hideBelow: 'lg' }
+  { src: 'bts-04', top: '16%', right: '4%', width: '12%', rotate: -4, hideBelow: 'lg' },
+  { src: 'bts-09', top: '27%', right: '5%', width: '11%', rotate: -6 },
+  { src: 'bts-13', top: '39%', right: '4%', width: '13%', rotate: 4,  hideBelow: 'lg' },
+  { src: 'bts-05', top: '51%', right: '5%', width: '11%', rotate: -3 },
+  { src: 'bts-16', top: '63%', right: '4%', width: '12%', rotate: -5, hideBelow: 'lg' },
+  { src: 'bts-02', top: '75%', right: '5%', width: '12%', rotate: -4 },
+  { src: 'bts-12', top: '88%', right: '4%', width: '12%', rotate: -3, hideBelow: 'lg' }
 ];
 
 export default function AboutScatter() {
