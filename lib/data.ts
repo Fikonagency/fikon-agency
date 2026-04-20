@@ -244,7 +244,7 @@ export const photos: string[] = [
 ];
 
 export const contact = {
-  email: 'Contact@fikonagency.se',
+  email: 'contact@fikonagency.se',
   instagram: 'https://instagram.com/fikonagency',
   linkedin: 'https://linkedin.com/company/fikonagency',
   vimeo: 'https://vimeo.com/user224887373'
