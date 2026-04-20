@@ -104,10 +104,6 @@ export default function Hero() {
         </Link>
       </div>
 
-      <div
-        aria-hidden
-        className="absolute bottom-2 left-1/2 -translate-x-1/2 h-8 w-px bg-gradient-to-b from-plommon/0 via-plommon/60 to-plommon/0 animate-scroll-hint"
-      />
     </section>
   );
 }
