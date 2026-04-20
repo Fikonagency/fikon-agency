@@ -26,6 +26,7 @@ type VideoTile = {
   colClass: string;
   rowClass: string;
   mobileOrder: number;
+  mobileHidden?: boolean;
 };
 
 type ServiceTile = {
@@ -37,6 +38,7 @@ type ServiceTile = {
   blurb: string;
   anchor: Kind;
   mobileOrder: number;
+  mobileHidden?: boolean;
 };
 
 const MOBILE_ORDER_CLASSES: Record<number, string> = {
@@ -95,7 +97,7 @@ const LAYOUT: Tile[] = [
     anchor: 'film-foto', mobileOrder: 6 },
   { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 7 },
 
-  { kind: 'video',   id: 'p-1184231462',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 9 },
+  { kind: 'video',   id: 'p-1184231462',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 9, mobileHidden: true },
   { kind: 'service', id: 's-grafisk',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Grafisk design',
     blurb:
@@ -107,7 +109,7 @@ const LAYOUT: Tile[] = [
     blurb:
       'Webb, SEO, paid social och analys. Vi bygger infrastrukturen så att det ni producerar faktiskt når fram, och mäter så ni vet vad som fungerar.',
     anchor: 'digital', mobileOrder: 10 },
-  { kind: 'video',   id: 'sigma-connectivity-interview', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 11 },
+  { kind: 'video',   id: 'sigma-connectivity-interview', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 11, mobileHidden: true },
 
   { kind: 'video',   id: 'p-1184231741',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3', mobileOrder: 12 }
 ];
@@ -156,7 +158,8 @@ export default async function VideoGrid() {
           {visible.map((t, i) => {
             const isHero = t.colClass.includes('md:col-span-12');
             const orderClass = MOBILE_ORDER_CLASSES[t.mobileOrder] || '';
-            const baseClasses = `${t.colClass} ${t.rowClass} ${orderClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[340px]'}`;
+            const hiddenClass = t.mobileHidden ? 'hidden md:block' : '';
+            const baseClasses = `${t.colClass} ${t.rowClass} ${orderClass} ${hiddenClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[340px]'}`;
 
             if (t.kind === 'service') {
               return (
