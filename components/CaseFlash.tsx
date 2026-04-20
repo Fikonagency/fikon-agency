@@ -74,7 +74,7 @@ export default function CaseFlash({
               <p className="text-cream/85 text-[10px] md:text-xs tracking-[0.5em] uppercase mb-6">
                 Fikon Agency
               </p>
-              <h1 className="font-display italic text-cream text-5xl md:text-8xl lg:text-[9rem] leading-[0.95] text-balance drop-shadow-[0_4px_40px_rgba(42,19,24,0.7)]">
+              <h1 className="font-display font-light text-cream text-5xl md:text-8xl lg:text-[9rem] leading-[0.95] text-balance drop-shadow-[0_4px_40px_rgba(42,19,24,0.7)] tracking-tight">
                 {title}
               </h1>
             </div>

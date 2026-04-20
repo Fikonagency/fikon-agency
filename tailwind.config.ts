@@ -8,16 +8,16 @@ const config: Config = {
         plommon: '#2A1318',
         bordeaux: '#7A2330',
         rose: '#C3808D',
-        cream: '#F2E0BE'
+        cream: '#F5F1E8'
       },
       fontFamily: {
-        display: ['var(--font-display)', 'Georgia', 'serif'],
+        display: ['var(--font-sans)', 'system-ui', 'sans-serif'],
         sans: ['var(--font-sans)', 'system-ui', 'sans-serif']
       },
       fontSize: {
-        'display-xl': ['clamp(3rem, 9vw, 7rem)', { lineHeight: '1', letterSpacing: '-0.02em' }],
-        'display-lg': ['clamp(2.25rem, 5.5vw, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        'display-md': ['clamp(1.75rem, 3.5vw, 2.75rem)', { lineHeight: '1.1', letterSpacing: '-0.01em' }]
+        'display-xl': ['clamp(3rem, 9vw, 7rem)', { lineHeight: '1', letterSpacing: '-0.03em' }],
+        'display-lg': ['clamp(2.25rem, 5.5vw, 5rem)', { lineHeight: '1.05', letterSpacing: '-0.025em' }],
+        'display-md': ['clamp(1.75rem, 3.5vw, 2.75rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }]
       },
       keyframes: {
         'scroll-hint': {

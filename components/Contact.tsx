@@ -12,8 +12,8 @@ export default function Contact() {
         <div className="mx-auto max-w-[1500px]">
           <Reveal>
             <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Kontakt</p>
-            <h1 className="font-display text-display-xl text-balance max-w-[14ch]">
-              Frågor? <span className="italic text-rose">Slå oss en pling.</span>
+            <h1 className="font-display font-light text-display-xl text-balance max-w-[14ch] leading-[1.02]">
+              Frågor? <span className="text-rose font-normal">Slå oss en signal.</span>
             </h1>
           </Reveal>
         </div>
@@ -29,12 +29,12 @@ export default function Contact() {
                 </p>
                 <a
                   href={`mailto:${contact.email}`}
-                  className="font-display text-2xl md:text-3xl lg:text-4xl hover:text-bordeaux transition-colors break-all"
+                  className="font-display font-medium text-2xl md:text-3xl lg:text-4xl hover:text-bordeaux transition-colors break-all"
                 >
                   {contact.email}
                 </a>
                 <p className="mt-3 text-plommon/70 max-w-sm">
-                  Har du inte tid att slå en signal — skriv ett mejl så hör vi av oss.
+                  Har du inte tid att slå en signal? Skriv ett mejl så hör vi av oss.
                 </p>
               </div>
             </Reveal>
@@ -43,7 +43,7 @@ export default function Contact() {
                 <p className="text-rose text-[10px] tracking-[0.3em] uppercase mb-3">
                   Här finns vi
                 </p>
-                <p className="font-display text-lg">Fikon Agency</p>
+                <p className="font-display font-medium text-lg">Fikon Agency</p>
                 <p className="text-plommon/70">Malmö · Sverige</p>
               </div>
             </Reveal>

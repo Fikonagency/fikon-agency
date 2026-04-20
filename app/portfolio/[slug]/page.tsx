@@ -16,7 +16,7 @@ export async function generateMetadata({
   const project = projects.find((p) => p.id === slug);
   if (!project) return { title: 'Fikon Agency' };
   return {
-    title: `${project.title} — Fikon Agency`,
+    title: `${project.title} · Fikon Agency`,
     description: project.intro ?? `${project.title} för ${project.client}.`
   };
 }

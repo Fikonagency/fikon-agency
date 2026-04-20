@@ -11,7 +11,6 @@ export default function Hero() {
     offset: ['start start', 'end start']
   });
 
-  // Tight spring: more responsive, less lag.
   const progress = useSpring(scrollYProgress, {
     stiffness: 180,
     damping: 26,
@@ -20,7 +19,6 @@ export default function Hero() {
 
   const wordmarkScale = useTransform(progress, [0, 0.45], [1, 0.94]);
   const wordmarkY = useTransform(progress, [0, 0.55], ['0%', '18%']);
-  // Faster fade out — gone by 55% scroll progress.
   const wordmarkOpacity = useTransform(progress, [0, 0.25, 0.55], [1, 0.85, 0]);
 
   const imageScale = useTransform(progress, [0, 1], [1, 1.06]);
@@ -56,10 +54,8 @@ export default function Hero() {
         </picture>
       </motion.div>
 
-      {/* Darker overlay so nav links and bottom captions hold contrast (WCAG AA) over the image */}
-      <div aria-hidden className="absolute inset-0 bg-plommon/30 pointer-events-none" />
+      <div aria-hidden className="absolute inset-0 bg-plommon/35 pointer-events-none" />
 
-      {/* Subtle bottom fade to cream so the wordmark never crashes into the section edge */}
       <div
         aria-hidden
         className="absolute inset-x-0 bottom-0 h-48 md:h-64 bg-gradient-to-t from-cream/90 via-cream/35 to-transparent pointer-events-none"
@@ -73,11 +69,11 @@ export default function Hero() {
           y: wordmarkY,
           opacity: wordmarkOpacity
         }}
-        className="absolute inset-0 flex items-center justify-center pointer-events-none will-change-transform"
+        className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none will-change-transform px-6"
       >
         <span
           aria-hidden
-          className="block bg-cream aspect-square w-[min(94vw,820px)]"
+          className="block bg-cream aspect-square w-[min(82vw,680px)]"
           style={{
             WebkitMaskImage: "url('/brand/fikon-wordmark.png')",
             maskImage: "url('/brand/fikon-wordmark.png')",
@@ -90,6 +86,9 @@ export default function Hero() {
             filter: 'drop-shadow(0 10px 44px rgba(42, 19, 24, 0.55))'
           }}
         />
+        <p className="mt-2 md:mt-4 text-cream font-display font-light text-xl md:text-3xl text-center text-balance max-w-[20ch] [text-shadow:0_2px_18px_rgba(42,19,24,0.7)]">
+          Mjuka berättelser för starka varumärken.
+        </p>
       </motion.div>
 
       <div className="absolute bottom-8 left-4 md:left-8 right-4 md:right-8 flex items-end justify-between gap-6 pointer-events-none">
@@ -98,7 +97,7 @@ export default function Hero() {
         </p>
         <Link
           href="/portfolio"
-          className="pointer-events-auto inline-flex items-center gap-3 px-5 py-3 md:px-6 md:py-3.5 bg-cream text-plommon font-display text-sm md:text-base hover:bg-rose transition-colors group shadow-[0_10px_40px_-12px_rgba(42,19,24,0.6)]"
+          className="pointer-events-auto inline-flex items-center gap-3 px-5 py-3 md:px-6 md:py-3.5 bg-cream text-plommon font-display font-medium text-sm md:text-base hover:bg-rose transition-colors group shadow-[0_10px_40px_-12px_rgba(42,19,24,0.6)]"
         >
           <span>Se portfolion</span>
           <span className="transition-transform group-hover:translate-x-1">→</span>

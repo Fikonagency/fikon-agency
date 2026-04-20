@@ -6,9 +6,9 @@ export default function AboutHero() {
       <div className="mx-auto max-w-[1500px]">
         <Reveal>
           <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Om Fikon</p>
-          <h1 className="font-display text-display-xl text-balance max-w-[14ch]">
+          <h1 className="font-display font-light text-display-xl text-balance max-w-[14ch] leading-[1.02]">
             Det är vi som{' '}
-            <span className="italic text-bordeaux">bygger bilden.</span>
+            <span className="text-bordeaux font-normal">bygger bilden.</span>
           </h1>
         </Reveal>
       </div>

@@ -8,7 +8,7 @@ body {
 }
 
 body {
-  background: #f2e0be;
+  background: #f5f1e8;
   color: #2a1318;
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -17,19 +17,12 @@ body {
 
 ::selection {
   background: #7a2330;
-  color: #f2e0be;
+  color: #f5f1e8;
 }
 
-/* Editorial photo treatment: take 15% off the brightness on all photos sitewide
-   so the warm cream surround feels more present. Targets <img> only — brand
-   silhouettes use CSS masks, not images, so they stay untouched. Iframes
-   (Vimeo embeds) are unaffected so video stays at native exposure. */
 img {
-  filter: brightness(0.85);
+  filter: brightness(0.9);
 }
-
-/* scroll-behavior: smooth on html breaks Next.js page transitions
-   (smooth-scrolls every navigation back to top). Keep instant. */
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;

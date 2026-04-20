@@ -1,9 +1,9 @@
 import Reveal from './Reveal';
 import { team, contact, btsPhotos } from '@/lib/data';
 
-const FIG_MASK: React.CSSProperties = {
-  WebkitMaskImage: "url('/brand/fikon-fig.png')",
-  maskImage: "url('/brand/fikon-fig.png')",
+const BB_MASK: React.CSSProperties = {
+  WebkitMaskImage: "url('/brand/bb-03.png')",
+  maskImage: "url('/brand/bb-03.png')",
   WebkitMaskSize: 'contain',
   maskSize: 'contain',
   WebkitMaskRepeat: 'no-repeat',
@@ -12,7 +12,6 @@ const FIG_MASK: React.CSSProperties = {
   maskPosition: 'center'
 };
 
-/** Scatter positions for BTS images around the central portraits (desktop only). */
 type Scatter = {
   src: string;
   top: string;
@@ -24,16 +23,14 @@ type Scatter = {
 };
 
 const SCATTER: Scatter[] = [
-  { src: 'bts-01', top: '2%',  left: '1%',   width: '17%', rotate: -4 },
-  { src: 'bts-04', top: '0%',  right: '2%',  width: '15%', rotate: 3 },
-  { src: 'bts-07', top: '22%', left: '0%',   width: '13%', rotate: 5, hidden: 'md' },
-  { src: 'bts-09', top: '18%', right: '0%',  width: '14%', rotate: -6, hidden: 'md' },
-  { src: 'bts-11', top: '44%', left: '2%',   width: '16%', rotate: -2 },
-  { src: 'bts-13', top: '50%', right: '1%',  width: '17%', rotate: 4 },
-  { src: 'bts-14', top: '72%', left: '0%',   width: '15%', rotate: 6, hidden: 'md' },
-  { src: 'bts-16', top: '78%', right: '1%',  width: '14%', rotate: -5, hidden: 'md' },
-  { src: 'bts-17', top: '90%', left: '14%',  width: '12%', rotate: 3 },
-  { src: 'bts-02', top: '88%', right: '16%', width: '13%', rotate: -4 }
+  { src: 'bts-01', top: '2%',  left: '0%',   width: '15%', rotate: -4 },
+  { src: 'bts-04', top: '0%',  right: '1%',  width: '14%', rotate: 3 },
+  { src: 'bts-07', top: '20%', left: '0%',   width: '12%', rotate: 5, hidden: 'md' },
+  { src: 'bts-09', top: '16%', right: '0%',  width: '13%', rotate: -6, hidden: 'md' },
+  { src: 'bts-11', top: '44%', left: '1%',   width: '14%', rotate: -2 },
+  { src: 'bts-13', top: '50%', right: '0%',  width: '15%', rotate: 4 },
+  { src: 'bts-14', top: '72%', left: '0%',   width: '13%', rotate: 6, hidden: 'md' },
+  { src: 'bts-16', top: '78%', right: '1%',  width: '12%', rotate: -5, hidden: 'md' }
 ];
 
 export default function TeamCards() {
@@ -42,14 +39,13 @@ export default function TeamCards() {
       <div className="mx-auto max-w-[1500px]">
         <Reveal>
           <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Teamet</p>
-          <h1 className="font-display text-display-lg md:text-display-xl text-balance max-w-[22ch] mb-12 md:mb-20">
-            Möt <span className="italic text-bordeaux">Fikon Agency.</span>
+          <h1 className="font-display font-light text-display-lg md:text-display-xl text-balance max-w-[22ch] mb-12 md:mb-16 leading-[1.02]">
+            Möt <span className="text-bordeaux font-normal">Fikon Agency.</span>
           </h1>
         </Reveal>
 
-        {/* Scatter + portraits stage (desktop) */}
+        {/* Desktop: scatter + portraits stage */}
         <div className="relative hidden md:block">
-          {/* scatter BTS layer */}
           <div aria-hidden className="absolute inset-0 pointer-events-none">
             {SCATTER.map((s, i) => (
               <div
@@ -76,8 +72,7 @@ export default function TeamCards() {
             ))}
           </div>
 
-          {/* portraits */}
-          <ul className="relative grid grid-cols-2 gap-8 lg:gap-16 py-12 px-[12%]">
+          <ul className="relative grid grid-cols-2 gap-3 lg:gap-6 py-10 px-[18%] lg:px-[20%]">
             {team.map((m, i) => (
               <li key={m.slug}>
                 <Reveal delay={i * 0.1}>
@@ -88,86 +83,101 @@ export default function TeamCards() {
           </ul>
         </div>
 
-        {/* Mobile: simple stacked portraits, BTS grid below */}
+        {/* Mobile: team in 2-col row */}
         <div className="md:hidden">
-          <ul className="grid grid-cols-1 gap-14">
+          <ul className="grid grid-cols-2 gap-4">
             {team.map((m, i) => (
               <li key={m.slug}>
                 <Reveal delay={i * 0.08}>
-                  <PortraitCard member={m} />
+                  <PortraitCard member={m} compact />
                 </Reveal>
               </li>
             ))}
           </ul>
-          <div className="mt-16">
-            <p className="text-rose text-[10px] tracking-[0.3em] uppercase mb-4">Bakom kulisserna</p>
-            <div className="grid grid-cols-2 gap-2">
-              {btsPhotos.slice(0, 8).map((b) => (
-                <div key={b} className="aspect-[4/3] overflow-hidden ring-1 ring-plommon/10">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={`/images/${b}-800.webp`} alt="" loading="lazy" className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function PortraitCard({ member: m }: { member: (typeof team)[number] }) {
+function PortraitCard({
+  member: m,
+  compact = false
+}: {
+  member: (typeof team)[number];
+  compact?: boolean;
+}) {
   const tint = m.slug === 'zana' ? 'bg-plommon' : 'bg-bordeaux';
   return (
     <article className="flex flex-col items-center text-center">
-      <div className="relative w-[240px] md:w-[280px] lg:w-[320px] aspect-square">
-        {/* soft halo behind the fig-masked portrait */}
+      <div
+        className={
+          compact
+            ? 'relative w-full aspect-square max-w-[180px]'
+            : 'relative w-[220px] md:w-[260px] lg:w-[300px] aspect-square'
+        }
+      >
         <span
           aria-hidden
           className={`absolute inset-0 ${tint} opacity-15 blur-2xl`}
-          style={FIG_MASK}
+          style={BB_MASK}
         />
-        {/* fig-masked photo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/images/${m.portrait}-1600.webp`}
           alt={m.name}
           className="absolute inset-0 w-full h-full object-cover"
-          style={FIG_MASK}
+          style={BB_MASK}
         />
       </div>
-      <h2 className="mt-7 font-display text-3xl md:text-4xl">{m.name}</h2>
-      <ul className="mt-3 text-rose text-sm md:text-base space-y-0.5">
+      <h2
+        className={`${compact ? 'mt-4 text-lg' : 'mt-6 text-2xl md:text-3xl lg:text-4xl'} font-display font-medium tracking-tight`}
+      >
+        {m.name}
+      </h2>
+      <ul
+        className={`${compact ? 'mt-1.5 text-[11px]' : 'mt-3 text-sm md:text-base'} text-rose space-y-0.5`}
+      >
         {m.craft.map((c) => (
           <li key={c}>{c}</li>
         ))}
       </ul>
-      <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs text-plommon/70">
+      {!compact && (
+        <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-1.5 text-xs text-plommon/70">
+          <a
+            href={`mailto:${m.email}`}
+            className="hover:text-bordeaux transition-colors"
+          >
+            {m.email}
+          </a>
+          <span aria-hidden className="text-rose">·</span>
+          <a
+            href={contact.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-bordeaux transition-colors"
+          >
+            Instagram
+          </a>
+          <span aria-hidden className="text-rose">·</span>
+          <a
+            href={contact.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="hover:text-bordeaux transition-colors"
+          >
+            LinkedIn
+          </a>
+        </div>
+      )}
+      {compact && (
         <a
           href={`mailto:${m.email}`}
-          className="hover:text-bordeaux transition-colors"
+          className="mt-2 text-[11px] text-plommon/70 hover:text-bordeaux transition-colors break-all"
         >
           {m.email}
         </a>
-        <span aria-hidden className="text-rose">·</span>
-        <a
-          href={contact.instagram}
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-bordeaux transition-colors"
-        >
-          Instagram
-        </a>
-        <span aria-hidden className="text-rose">·</span>
-        <a
-          href={contact.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-bordeaux transition-colors"
-        >
-          LinkedIn
-        </a>
-      </div>
+      )}
     </article>
   );
 }

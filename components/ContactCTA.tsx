@@ -7,7 +7,6 @@ export default function ContactCTA() {
   return (
     <section className="relative bg-cream text-plommon overflow-hidden border-t border-plommon/15">
       <div className="relative mx-auto max-w-[1500px] px-6 md:px-10 py-14 md:py-24">
-        {/* Framed/cut background image: bordered rectangle with fig-shaped holes punched out of the dark overlay */}
         <div
           aria-hidden
           className="absolute inset-x-6 md:inset-x-10 top-8 bottom-8 md:top-12 md:bottom-12 overflow-hidden ring-1 ring-plommon/20"
@@ -17,11 +16,9 @@ export default function ContactCTA() {
             src={`/images/${BG}-2400.webp`}
             alt=""
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ filter: 'brightness(0.55) saturate(0.9)' }}
+            style={{ filter: 'brightness(0.5) saturate(0.85)' }}
           />
-          {/* plommon veil to make text pop */}
-          <div className="absolute inset-0 bg-plommon/45" />
-          {/* Fig-shaped "holes" — cream coloured figs punched through the darkened image */}
+          <div className="absolute inset-0 bg-plommon/55" />
           <span
             className="absolute hidden md:block"
             style={{
@@ -29,9 +26,9 @@ export default function ContactCTA() {
               top: '14%',
               width: 160,
               height: 160,
-              backgroundColor: '#F2E0BE',
-              WebkitMaskImage: "url('/brand/fikon-fig.png')",
-              maskImage: "url('/brand/fikon-fig.png')",
+              backgroundColor: '#F5F1E8',
+              WebkitMaskImage: "url('/brand/bb-03.png')",
+              maskImage: "url('/brand/bb-03.png')",
               WebkitMaskSize: 'contain',
               maskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
@@ -47,9 +44,9 @@ export default function ContactCTA() {
               bottom: '12%',
               width: 220,
               height: 220,
-              backgroundColor: '#F2E0BE',
-              WebkitMaskImage: "url('/brand/fikon-fig.png')",
-              maskImage: "url('/brand/fikon-fig.png')",
+              backgroundColor: '#F5F1E8',
+              WebkitMaskImage: "url('/brand/bb-03.png')",
+              maskImage: "url('/brand/bb-03.png')",
               WebkitMaskSize: 'contain',
               maskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
@@ -66,8 +63,8 @@ export default function ContactCTA() {
               width: 90,
               height: 90,
               backgroundColor: '#C3808D',
-              WebkitMaskImage: "url('/brand/fikon-fig.png')",
-              maskImage: "url('/brand/fikon-fig.png')",
+              WebkitMaskImage: "url('/brand/bb-03.png')",
+              maskImage: "url('/brand/bb-03.png')",
               WebkitMaskSize: 'contain',
               maskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
@@ -80,17 +77,19 @@ export default function ContactCTA() {
 
         <div className="relative py-12 md:py-20 text-center">
           <Reveal>
-            <p className="font-display italic text-rose text-2xl md:text-3xl mb-4 drop-shadow-[0_2px_14px_rgba(42,19,24,0.5)]">
+            <p className="text-rose text-xs md:text-sm tracking-[0.4em] uppercase mb-6">
               Hej.
             </p>
-            <h2 className="font-display text-cream leading-[1.02] text-display-xl text-balance drop-shadow-[0_6px_36px_rgba(42,19,24,0.6)]">
-              Ska vi ta en fika <span className="italic text-rose">och prata?</span>
+            <h2 className="font-display font-light text-cream leading-[1.05] text-display-xl text-balance drop-shadow-[0_6px_36px_rgba(42,19,24,0.6)] max-w-[18ch] mx-auto">
+              Skriv till oss.
+              <br />
+              <span className="text-rose">Vi svarar samma dag.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <Link
               href="/kontakt"
-              className="mt-10 md:mt-14 inline-flex items-center gap-4 px-8 py-4 md:px-10 md:py-5 bg-cream text-plommon font-display text-lg md:text-xl hover:bg-rose hover:text-plommon transition-colors group shadow-[0_12px_48px_-12px_rgba(42,19,24,0.5)]"
+              className="mt-10 md:mt-14 inline-flex items-center gap-4 px-8 py-4 md:px-10 md:py-5 bg-cream text-plommon font-display font-medium text-lg md:text-xl hover:bg-rose hover:text-plommon transition-colors group shadow-[0_12px_48px_-12px_rgba(42,19,24,0.5)]"
             >
               Kontakta oss
               <span className="transition-transform group-hover:translate-x-1">→</span>

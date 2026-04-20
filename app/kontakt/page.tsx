@@ -1,8 +1,8 @@
 import Contact from '@/components/Contact';
 
 export const metadata = {
-  title: 'Kontakt — Fikon Agency',
-  description: 'Säg hej på hej@fikonagency.se eller hitta oss på Instagram, LinkedIn, Vimeo.'
+  title: 'Kontakt · Fikon Agency',
+  description: 'Skriv till Contact@fikonagency.se. Hitta oss på Instagram, LinkedIn och Vimeo.'
 };
 
 export default function KontaktPage() {

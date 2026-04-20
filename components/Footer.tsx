@@ -3,8 +3,8 @@ import { contact } from '@/lib/data';
 
 const FIG_STYLE: React.CSSProperties = {
   backgroundColor: '#2A1318',
-  WebkitMaskImage: "url('/brand/fikon-fig.png')",
-  maskImage: "url('/brand/fikon-fig.png')",
+  WebkitMaskImage: "url('/brand/bb-03.png')",
+  maskImage: "url('/brand/bb-03.png')",
   WebkitMaskSize: 'contain',
   maskSize: 'contain',
   WebkitMaskRepeat: 'no-repeat',
@@ -16,22 +16,19 @@ const FIG_STYLE: React.CSSProperties = {
 export default function Footer() {
   return (
     <footer className="bg-cream text-plommon border-t border-plommon/10">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24">
-        <div className="max-w-xl">
-          <Link
-            href="/"
-            aria-label="Fikon Agency"
-            className="block w-14 h-14 md:w-16 md:h-16 mb-6"
-            style={FIG_STYLE}
-          />
-          <p className="font-display text-xl md:text-2xl">Fikon Agency</p>
-          <p className="mt-2 text-plommon/60 text-sm max-w-xs">
-            Reklambyrå i Malmö. Film, foto och identitet för varumärken som vill
-            synas utan att skrika.
-          </p>
-        </div>
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-20 flex flex-col items-center text-center">
+        <Link
+          href="/"
+          aria-label="Fikon Agency"
+          className="block w-14 h-14 md:w-16 md:h-16 mb-6"
+          style={FIG_STYLE}
+        />
+        <p className="font-display font-medium text-xl md:text-2xl tracking-tight">Fikon Agency</p>
+        <p className="mt-2 text-plommon/60 text-sm max-w-sm">
+          Reklambyrå i Malmö. Mjuka berättelser för starka varumärken.
+        </p>
 
-        <ul className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-xs tracking-[0.2em] uppercase text-plommon/65">
+        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-xs tracking-[0.2em] uppercase text-plommon/65">
           <li>
             <a
               href={contact.instagram}
@@ -64,8 +61,9 @@ export default function Footer() {
           </li>
         </ul>
 
-        <div className="mt-12 pt-6 border-t border-plommon/10 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs text-plommon/50 tracking-wide">
+        <div className="mt-10 pt-6 border-t border-plommon/10 w-full max-w-md flex flex-col md:flex-row md:items-center justify-center gap-3 text-xs text-plommon/50 tracking-wide">
           <p>© {new Date().getFullYear()} Fikon Agency</p>
+          <span aria-hidden className="hidden md:inline text-rose">·</span>
           <p>Malmö · Sverige</p>
         </div>
       </div>

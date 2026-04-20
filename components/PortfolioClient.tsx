@@ -12,8 +12,8 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
       <div className="mx-auto max-w-[1500px]">
         <Reveal>
           <p className="text-rose text-xs tracking-[0.3em] uppercase mb-4">Portfolio</p>
-          <h1 className="font-display text-display-xl mb-16 md:mb-24 text-balance max-w-4xl">
-            Ett urval <span className="italic">av det vi gjort.</span>
+          <h1 className="font-display font-light text-display-xl mb-16 md:mb-24 text-balance max-w-4xl leading-[1.02]">
+            Ett urval <span className="text-bordeaux font-normal">av det vi gjort.</span>
           </h1>
         </Reveal>
 
@@ -44,13 +44,13 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
                     <span className="font-display text-xs text-rose tabular-nums shrink-0">
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-display text-3xl md:text-5xl lg:text-6xl leading-none truncate group-hover:text-bordeaux transition-colors">
+                    <span className="font-display font-light text-3xl md:text-5xl lg:text-6xl leading-none truncate group-hover:text-bordeaux transition-colors tracking-tight">
                       {p.title}
                     </span>
                   </div>
                   <div className="relative hidden md:flex items-baseline gap-8 shrink-0 text-plommon/60 text-xs tracking-[0.2em] uppercase z-10">
                     <span className="truncate max-w-[14rem]">
-                      {p.client === 'TBD' ? '—' : p.client}
+                      {p.client === 'TBD' ? '·' : p.client}
                     </span>
                     <span className="tabular-nums">{p.year}</span>
                     <span className="w-6 text-right transition-transform group-hover:translate-x-1">
@@ -78,11 +78,11 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <h3 className="mt-4 font-display text-2xl group-hover:text-bordeaux transition-colors">
+                  <h3 className="mt-4 font-display font-medium text-2xl group-hover:text-bordeaux transition-colors">
                     {p.title}
                   </h3>
                   <p className="mt-1 text-plommon/50 text-xs tracking-[0.2em] uppercase">
-                    {p.client === 'TBD' ? '—' : p.client}
+                    {p.client === 'TBD' ? '·' : p.client}
                     <span className="ml-3 text-bordeaux">{p.year}</span>
                   </p>
                 </Link>

@@ -45,7 +45,7 @@ export const projects: Project[] = [
       '0Y9A0479', '0Y9A0495', '0Y9A0505', '0Y9A0552', '0Y9A0635', '0Y9A9969'
     ],
     intro:
-      'Event för Flawlessface Clinic, februari 2026. Film och foto från kvällen — miljö, produkter och känsla i rummet.',
+      'Event för Flawlessface Clinic, februari 2026. Film och foto från kvällen. Miljö, produkter och känsla i rummet.',
     meta: [
       { label: 'Klient', value: 'Flawlessface Clinic' },
       { label: 'Format', value: 'Event · Film · Foto' },
@@ -75,7 +75,7 @@ export const projects: Project[] = [
       { vimeoId: '1184231463', title: 'Intervju 2' },
       { vimeoId: '1184231459', title: 'Intervju 3' }
     ],
-    intro: 'Eventfilm och stillbilder från Connectivity of Things — Sigma Connectivitys event 2025. Hero-film plus tre intervjuer från dagen.',
+    intro: 'Eventfilm och stillbilder från Connectivity of Things, Sigma Connectivitys event 2025. Hero-film plus tre intervjuer från dagen.',
     meta: [
       { label: 'Klient', value: 'Sigma Connectivity' },
       { label: 'Format', value: 'Event · Film · Foto · Intervjuer' },
@@ -109,7 +109,7 @@ export const projects: Project[] = [
       { label: 'År', value: '2026' }
     ]
   },
-  { id: 'currylicious-tiktok', vimeoId: '1184241323', title: 'Currylicious — TikTok', client: 'Currylicious', year: 2026, kind: 'social', featured: true, listed: false },
+  { id: 'currylicious-tiktok', vimeoId: '1184241323', title: 'Currylicious · TikTok', client: 'Currylicious', year: 2026, kind: 'social', featured: true, listed: false },
   { id: 'smuts-under-naglar', vimeoId: '1184232007', title: 'Smuts under naglar', client: 'Smuts under naglar', year: 2026, kind: 'film', featured: false, listed: false },
   {
     id: 'gardinex',
@@ -125,7 +125,7 @@ export const projects: Project[] = [
       { vimeoId: '1184231462', title: 'Film 4' },
       { vimeoId: '1184231460', title: 'Film 5' }
     ],
-    intro: 'Flera reklamfilmer för Gardinex — koncept, regi, film och efterarbete.',
+    intro: 'Flera reklamfilmer för Gardinex. Koncept, regi, film och efterarbete.',
     meta: [
       { label: 'Klient', value: 'Gardinex' },
       { label: 'Format', value: 'Reklamfilm · Kampanj' },
@@ -135,7 +135,7 @@ export const projects: Project[] = [
   { id: 'vertikal-30s', vimeoId: '1184232598', title: 'Vertikal', client: 'TBD', year: 2026, kind: 'social', featured: false, listed: false },
   { id: 'p-1184231463', vimeoId: '1184231463', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'p-1184232574', vimeoId: '1184232574', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
-  { id: 'sigma-connectivity-interview', vimeoId: '1184232355', title: 'Sigma Connectivity — Intervju', client: 'Sigma Connectivity', year: 2026, kind: 'film', featured: false, listed: false },
+  { id: 'sigma-connectivity-interview', vimeoId: '1184232355', title: 'Sigma Connectivity · Intervju', client: 'Sigma Connectivity', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231741', vimeoId: '1184231741', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231459', vimeoId: '1184231459', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231460', vimeoId: '1184231460', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },

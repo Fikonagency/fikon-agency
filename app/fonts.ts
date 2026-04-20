@@ -1,14 +1,8 @@
-import { Fraunces, Poppins } from 'next/font/google';
-
-export const fraunces = Fraunces({
-  subsets: ['latin'],
-  variable: '--font-display',
-  display: 'swap'
-});
+import { Poppins } from 'next/font/google';
 
 export const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-sans',
   display: 'swap'
 });

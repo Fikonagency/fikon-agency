@@ -4,6 +4,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const LINKS = [
+  { href: '/portfolio', label: 'Portfolio' },
+  { href: '/tjanster', label: 'Tjänster' },
+  { href: '/om', label: 'Om oss' },
+  { href: '/kontakt', label: 'Kontakt' }
+];
+
 export default function Nav() {
   const pathname = usePathname();
   const isHome = pathname === '/';
@@ -28,7 +35,7 @@ export default function Nav() {
           : 'bg-cream/0 border-b border-transparent'
       }`}
     >
-      <div className="mx-auto max-w-[1500px] h-full pl-3 pr-6 md:pl-4 md:pr-10 flex items-center justify-between">
+      <div className="mx-auto max-w-[1500px] h-full pl-3 pr-4 md:pl-4 md:pr-10 flex items-center justify-between">
         <Link
           href="/"
           aria-label="Fikon Agency"
@@ -41,8 +48,8 @@ export default function Nav() {
             aria-hidden
             className="block w-full h-full bg-plommon"
             style={{
-              WebkitMaskImage: "url('/brand/fikon-fig.png')",
-              maskImage: "url('/brand/fikon-fig.png')",
+              WebkitMaskImage: "url('/brand/bb-03.png')",
+              maskImage: "url('/brand/bb-03.png')",
               WebkitMaskSize: 'contain',
               maskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',
@@ -53,36 +60,22 @@ export default function Nav() {
           />
         </Link>
         <ul
-          className={`flex items-center gap-2 md:gap-6 text-sm tracking-wide transition-colors duration-500 ${
+          className={`flex items-center gap-0.5 sm:gap-1 md:gap-3 text-sm tracking-wide transition-colors duration-500 ${
             scrolled
               ? 'text-plommon/75'
               : 'text-cream/95 [text-shadow:0_2px_10px_rgba(42,19,24,0.7)]'
           }`}
         >
-          <li>
-            <Link
-              href="/portfolio"
-              className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
-            >
-              Portfolio
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/om"
-              className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
-            >
-              Om oss
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/kontakt"
-              className={`inline-flex items-center min-h-[44px] px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
-            >
-              Kontakt
-            </Link>
-          </li>
+          {LINKS.map((l) => (
+            <li key={l.href}>
+              <Link
+                href={l.href}
+                className={`inline-flex items-center min-h-[44px] px-2 sm:px-3 py-2 transition-colors ${scrolled ? 'hover:text-bordeaux' : 'hover:text-rose'}`}
+              >
+                {l.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>

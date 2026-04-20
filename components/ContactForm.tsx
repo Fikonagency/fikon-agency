@@ -60,8 +60,8 @@ export default function ContactForm() {
     return (
       <div className="bg-cream ring-1 ring-plommon/15 p-6 md:p-10">
         <p className="text-rose text-[10px] tracking-[0.3em] uppercase mb-3">Tack!</p>
-        <p className="font-display text-2xl md:text-3xl mb-4">
-          Vi hör av oss <span className="italic text-bordeaux">snart.</span>
+        <p className="font-display font-medium text-2xl md:text-3xl mb-4">
+          Vi hör av oss <span className="text-bordeaux">snart.</span>
         </p>
         <p className="text-plommon/70 text-sm">
           Meddelandet är skickat till {contact.email}. Behöver du oss snabbare,{' '}
@@ -133,7 +133,7 @@ export default function ContactForm() {
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="inline-flex items-center gap-3 px-8 py-3 bg-plommon text-cream font-display text-lg hover:bg-bordeaux transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bordeaux/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:opacity-60 disabled:cursor-not-allowed"
+          className="inline-flex items-center gap-3 px-8 py-3 bg-plommon text-cream font-display font-medium text-lg hover:bg-bordeaux transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bordeaux/60 focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:opacity-60 disabled:cursor-not-allowed"
         >
           {status === 'sending' ? 'Skickar …' : 'Skicka'}
           {status !== 'sending' && <span aria-hidden>→</span>}

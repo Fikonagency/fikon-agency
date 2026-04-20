@@ -57,7 +57,7 @@ export default function CaseGallery({ project }: { project: Project }) {
                 <div className="relative aspect-video w-full overflow-hidden bg-plommon ring-1 ring-plommon/10">
                   <iframe
                     src={`https://player.vimeo.com/video/${v.vimeoId}?${v.vimeoHash ? `h=${v.vimeoHash}&` : ''}title=0&byline=0&portrait=0&dnt=1`}
-                    title={v.title ?? `${project.title} — video ${i + 2}`}
+                    title={v.title ?? `${project.title} · video ${i + 2}`}
                     allow="autoplay; fullscreen; picture-in-picture"
                     allowFullScreen
                     loading="lazy"
@@ -77,7 +77,7 @@ export default function CaseGallery({ project }: { project: Project }) {
 
       {gallery.length > 0 && (
         <section className="px-6 md:px-10 mx-auto max-w-[1500px] py-20 md:py-28">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-8">
             {gallery.map((name, i) => {
               const span = spanFor(i, gallery.length);
               return (
@@ -104,7 +104,7 @@ export default function CaseGallery({ project }: { project: Project }) {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={`/images/${name}-1600.webp`}
-                        alt={`${project.title} — bild ${i + 1} av ${gallery.length}`}
+                        alt={`${project.title}, bild ${i + 1} av ${gallery.length}`}
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover"
                       />
@@ -148,10 +148,10 @@ function spanFor(
   total: number
 ): { className: string; ratio: string } {
   const mod = i % 6;
-  if (mod === 0) return { className: 'md:col-span-12', ratio: '16 / 9' };
-  if (mod === 1) return { className: 'md:col-span-7', ratio: '4 / 5' };
-  if (mod === 2) return { className: 'md:col-span-5', ratio: '4 / 5' };
-  if (mod === 3) return { className: 'md:col-span-6', ratio: '4 / 3' };
-  if (mod === 4) return { className: 'md:col-span-6', ratio: '4 / 3' };
-  return { className: total - 1 === i ? 'md:col-span-12' : 'md:col-span-8', ratio: '16 / 9' };
+  if (mod === 0) return { className: 'col-span-2 md:col-span-12', ratio: '16 / 9' };
+  if (mod === 1) return { className: 'col-span-2 md:col-span-7', ratio: '4 / 5' };
+  if (mod === 2) return { className: 'col-span-2 md:col-span-5', ratio: '4 / 5' };
+  if (mod === 3) return { className: 'col-span-1 md:col-span-6', ratio: '3 / 4' };
+  if (mod === 4) return { className: 'col-span-1 md:col-span-6', ratio: '3 / 4' };
+  return { className: total - 1 === i ? 'col-span-2 md:col-span-12' : 'col-span-2 md:col-span-8', ratio: '16 / 9' };
 }
