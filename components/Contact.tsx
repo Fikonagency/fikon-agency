@@ -11,7 +11,10 @@ export default function Contact() {
       >
         <div className="mx-auto max-w-[1500px]">
           <Reveal>
-            <p className="text-rose text-xs tracking-[0.4em] uppercase">Kontakt</p>
+            <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Kontakt</p>
+            <h1 className="font-display font-light text-display-xl text-balance max-w-[16ch] leading-[1.02]">
+              Berätta om <span className="text-rose font-normal">ditt projekt.</span>
+            </h1>
           </Reveal>
         </div>
       </section>

@@ -139,7 +139,7 @@ export const projects: Project[] = [
   { id: 'p-1184231741', vimeoId: '1184231741', title: 'Sigma Connectivity', client: 'Sigma Connectivity', year: 2025, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231459', vimeoId: '1184231459', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231460', vimeoId: '1184231460', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
-  { id: 'p-1184231462', vimeoId: '1184231462', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
+  { id: 'p-1184231462', vimeoId: '1184231462', title: 'Gardinex', client: 'Gardinex', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'utkast-05', vimeoId: '1171381133', title: 'Utkast', client: 'TBD', year: 2025, kind: 'film', featured: false, listed: false },
   {
     id: 'currylicious',
