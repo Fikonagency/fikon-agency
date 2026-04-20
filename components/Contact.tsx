@@ -33,9 +33,6 @@ export default function Contact() {
                 >
                   {contact.email}
                 </a>
-                <p className="mt-3 text-plommon/70 max-w-sm">
-                  Har du inte tid att slå en signal? Skriv ett mejl så hör vi av oss.
-                </p>
               </div>
             </Reveal>
             <Reveal delay={0.05}>
@@ -72,17 +69,6 @@ export default function Contact() {
                       className="hover:text-bordeaux transition-colors"
                     >
                       LinkedIn
-                    </a>
-                  </li>
-                  <li aria-hidden className="text-rose">·</li>
-                  <li>
-                    <a
-                      href={contact.vimeo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="hover:text-bordeaux transition-colors"
-                    >
-                      Vimeo
                     </a>
                   </li>
                 </ul>
