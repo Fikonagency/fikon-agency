@@ -10,13 +10,15 @@ export const metadata = {
 
 export default function OmPage() {
   return (
-    <section className="relative overflow-hidden bg-cream">
-      <AboutScatter />
-      <div className="relative z-10">
-        <TeamCards />
-        <AboutIntro />
-        <Clients />
-      </div>
-    </section>
+    <>
+      <section className="relative overflow-hidden bg-cream">
+        <AboutScatter />
+        <div className="relative z-10">
+          <TeamCards />
+          <AboutIntro />
+        </div>
+      </section>
+      <Clients />
+    </>
   );
 }

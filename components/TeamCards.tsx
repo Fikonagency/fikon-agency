@@ -59,7 +59,7 @@ function PortraitCard({
   const tint = m.slug === 'zana' ? 'bg-plommon' : 'bg-bordeaux';
   const imgStyle: React.CSSProperties =
     m.slug === 'zana'
-      ? { objectPosition: 'center 5%', transform: 'scale(0.70) translate(-5%, -15%)' }
+      ? { objectPosition: 'center 0%', transform: 'scale(0.58) translate(-6%, -22%)' }
       : { objectPosition: 'center 30%', transform: 'scale(0.78) translate(-8%, 10%)' };
   return (
     <article className="flex flex-col items-center text-center">

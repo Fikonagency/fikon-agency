@@ -40,52 +40,57 @@ type ServiceTile = {
 type Tile = VideoTile | ServiceTile;
 
 /**
- * Grid rhythm: no two service tiles adjacent. Every service sits between videos.
- * Ends with the Sigma Connectivity hero video (p-1184231741) full width.
+ * Layout rhythm — every service tile is surrounded only by videos.
+ * No two service tiles share a border (horizontally OR vertically).
+ * Alternates side per row so services don't stack in the same column.
+ * Ends with Sigma Connectivity (p-1184231741) at full width.
  *
- * Row flow (12-col desktop):
- *  1. gardinex                                   (V, 12)
- *  2. strategi (4) + sigma-event (8)             (S+V)
- *  3. brand-identity (4) + flawlessface (4) + film-foto (4)  (S+V+S)
- *  4. currylicious                               (V, 12)
- *  5. grafisk-design (4) + s-t-petri (4) + digital (4)       (S+V+S)
- *  6. sigma-final (p-1184231741)                 (V, 12)  — END
+ * 12-col grid, col-6 rows except the hero book-ends:
+ *  r1: gardinex (V,12)                        hero
+ *  r2: strategi (S,6)        + sigma-event (V,6)
+ *  r3: flawlessface (V,6)    + brand-identity (S,6)
+ *  r4: film-foto (S,6)       + currylicious (V,6)
+ *  r5: s-t-petri (V,6)       + grafisk-design (S,6)
+ *  r6: digital (S,6)         + sigma-interview (V,6)
+ *  r7: sigma-final (V,12)                     hero end
  */
 const LAYOUT: Tile[] = [
   { kind: 'video',   id: 'gardinex',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
 
-  { kind: 'service', id: 's-strategi',               colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
+  { kind: 'service', id: 's-strategi',               colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Strategi & varumärke',
     blurb:
       'Vi tar reda på var ni står, vart ni vill, och vad som faktiskt skiljer er från konkurrenterna. Sen översätter vi det till en riktning ni kan äga.',
     anchor: 'strategi' },
-  { kind: 'video',   id: 'sigma-connectivity-event', colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3' },
+  { kind: 'video',   id: 'sigma-connectivity-event', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
 
-  { kind: 'service', id: 's-brand-identity',         colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
+  { kind: 'video',   id: 'flawlessface-clinic',      colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+  { kind: 'service', id: 's-brand-identity',         colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Brand identity',
     blurb:
       'Logotyp, färg, typografi och bildspråk som känns samlat i varje kanal. Vi bygger ett system som håller, inte bara enskilda ögonblicksverk.',
     anchor: 'brand-identity' },
-  { kind: 'video',   id: 'flawlessface-clinic',      colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-film-foto',              colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
+
+  { kind: 'service', id: 's-film-foto',              colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Film & foto',
     blurb:
       'Reklamfilm, kampanjbilder, produkt och event. Vi producerar själva, från storyboard till färdig leverans. Tempot blir högre och priset lägre.',
     anchor: 'film-foto' },
+  { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
 
-  { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
-
-  { kind: 'service', id: 's-grafisk',                colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
+  { kind: 'video',   id: 's-t-petri',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
+  { kind: 'service', id: 's-grafisk',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Grafisk design',
     blurb:
       'Trycksaker, presentationer och sales collateral. De vardagliga delarna av varumärket, designade med samma noggrannhet som kampanjerna.',
     anchor: 'grafisk-design' },
-  { kind: 'video',   id: 's-t-petri',                colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-digital',                colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
+
+  { kind: 'service', id: 's-digital',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Digital närvaro',
     blurb:
       'Webb, SEO, paid social och analys. Vi bygger infrastrukturen så att det ni producerar faktiskt når fram, och mäter så ni vet vad som fungerar.',
     anchor: 'digital' },
+  { kind: 'video',   id: 'sigma-connectivity-interview', colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' },
 
   { kind: 'video',   id: 'p-1184231741',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' }
 ];
@@ -133,7 +138,7 @@ export default async function VideoGrid() {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 md:[grid-auto-rows:minmax(140px,auto)]">
           {visible.map((t, i) => {
             const isHero = t.colClass.includes('md:col-span-12');
-            const baseClasses = `${t.colClass} ${t.rowClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[320px]'}`;
+            const baseClasses = `${t.colClass} ${t.rowClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[340px]'}`;
 
             if (t.kind === 'service') {
               return (
@@ -142,11 +147,11 @@ export default async function VideoGrid() {
                     href={`/tjanster#${t.anchor}`}
                     className="group relative block w-full h-full overflow-hidden"
                   >
-                    <div className="relative h-full w-full px-5 pb-6 pt-16 md:px-8 md:pb-8 md:pt-24 flex flex-col text-plommon">
-                      <h3 className="font-display font-light text-2xl md:text-3xl lg:text-[2.5rem] text-balance leading-[1.05] max-w-[15ch] group-hover:text-bordeaux transition-colors">
+                    <div className="relative h-full w-full px-5 pb-6 pt-16 md:px-10 md:pb-10 md:pt-28 flex flex-col text-plommon">
+                      <h3 className="font-display font-light text-2xl md:text-3xl lg:text-[2.5rem] text-balance leading-[1.05] max-w-[16ch] group-hover:text-bordeaux transition-colors">
                         {t.title}
                       </h3>
-                      <p className="mt-5 md:mt-6 text-plommon/70 text-sm md:text-base leading-relaxed max-w-md">
+                      <p className="mt-5 md:mt-6 text-plommon/70 text-sm md:text-base leading-relaxed max-w-xl">
                         {t.blurb}
                       </p>
                       <span className="mt-auto pt-10 inline-flex items-center gap-2 text-rose text-xs tracking-[0.25em] uppercase">
