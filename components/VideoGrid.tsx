@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Reveal from './Reveal';
 import LazyVimeo from './LazyVimeo';
-import ServiceSymbol from './ServiceSymbol';
 import { projects } from '@/lib/data';
 
 async function getPoster(vimeoId: string, vimeoHash?: string): Promise<string | undefined> {
@@ -40,32 +39,55 @@ type ServiceTile = {
 
 type Tile = VideoTile | ServiceTile;
 
+/**
+ * Grid rhythm: no two service tiles adjacent. Every service sits between videos.
+ * Ends with the Sigma Connectivity hero video (p-1184231741) full width.
+ *
+ * Row flow (12-col desktop):
+ *  1. gardinex                                   (V, 12)
+ *  2. strategi (4) + sigma-event (8)             (S+V)
+ *  3. brand-identity (4) + flawlessface (4) + film-foto (4)  (S+V+S)
+ *  4. currylicious                               (V, 12)
+ *  5. grafisk-design (4) + s-t-petri (4) + digital (4)       (S+V+S)
+ *  6. sigma-final (p-1184231741)                 (V, 12)  — END
+ */
 const LAYOUT: Tile[] = [
-  { kind: 'video',   id: 'gardinex',                     colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-strategi',                   colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
+  { kind: 'video',   id: 'gardinex',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
+
+  { kind: 'service', id: 's-strategi',               colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
     title: 'Strategi & varumärke',
-    blurb: 'Positionering, story och tonalitet som håller över tid.',
+    blurb:
+      'Vi tar reda på var ni står, vart ni vill, och vad som faktiskt skiljer er från konkurrenterna. Sen översätter vi det till en riktning ni kan äga.',
     anchor: 'strategi' },
-  { kind: 'video',   id: 'sigma-connectivity-event',     colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-brand-identity',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
+  { kind: 'video',   id: 'sigma-connectivity-event', colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3' },
+
+  { kind: 'service', id: 's-brand-identity',         colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
     title: 'Brand identity',
-    blurb: 'Logotyp, designsystem och bildspråk som känns samlat överallt.',
+    blurb:
+      'Logotyp, färg, typografi och bildspråk som känns samlat i varje kanal. Vi bygger ett system som håller, inte bara enskilda ögonblicksverk.',
     anchor: 'brand-identity' },
-  { kind: 'service', id: 's-film-foto',                  colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
+  { kind: 'video',   id: 'flawlessface-clinic',      colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3' },
+  { kind: 'service', id: 's-film-foto',              colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
     title: 'Film & foto',
-    blurb: 'Reklamfilm, kampanjbilder och social-first content. Från koncept till leverans.',
+    blurb:
+      'Reklamfilm, kampanjbilder, produkt och event. Vi producerar själva, från storyboard till färdig leverans. Tempot blir högre och priset lägre.',
     anchor: 'film-foto' },
-  { kind: 'video',   id: 'currylicious',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-grafisk',                    colClass: 'col-span-1 md:col-span-4',  rowClass: 'md:row-span-3',
+
+  { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
+
+  { kind: 'service', id: 's-grafisk',                colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
     title: 'Grafisk design',
-    blurb: 'Trycksaker, presentationer och sales collateral med samma noggrannhet som kampanjerna.',
+    blurb:
+      'Trycksaker, presentationer och sales collateral. De vardagliga delarna av varumärket, designade med samma noggrannhet som kampanjerna.',
     anchor: 'grafisk-design' },
-  { kind: 'video',   id: 'flawlessface-clinic',          colClass: 'col-span-1 md:col-span-8',  rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-digital',                    colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
+  { kind: 'video',   id: 's-t-petri',                colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3' },
+  { kind: 'service', id: 's-digital',                colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
     title: 'Digital närvaro',
-    blurb: 'Annonsering, social media, SEO och webb. Vi mäter och optimerar.',
+    blurb:
+      'Webb, SEO, paid social och analys. Vi bygger infrastrukturen så att det ni producerar faktiskt når fram, och mäter så ni vet vad som fungerar.',
     anchor: 'digital' },
-  { kind: 'video',   id: 'p-1184231741',                 colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' }
+
+  { kind: 'video',   id: 'p-1184231741',             colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' }
 ];
 
 export default async function VideoGrid() {
@@ -108,12 +130,10 @@ export default async function VideoGrid() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 md:[grid-auto-rows:minmax(140px,auto)] [grid-auto-flow:dense]">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-3 md:gap-4 md:[grid-auto-rows:minmax(140px,auto)]">
           {visible.map((t, i) => {
             const isHero = t.colClass.includes('md:col-span-12');
-            const isHalfMobile = t.colClass.includes('col-span-1 ');
-            const mobileAspect = isHalfMobile ? 'aspect-[3/4]' : 'aspect-video';
-            const baseClasses = `${t.colClass} ${t.rowClass} ${mobileAspect} md:aspect-auto ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[300px]'}`;
+            const baseClasses = `${t.colClass} ${t.rowClass} ${t.kind === 'video' ? 'aspect-video md:aspect-auto' : 'aspect-auto min-h-[320px]'} ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[320px]'}`;
 
             if (t.kind === 'service') {
               return (
@@ -122,20 +142,14 @@ export default async function VideoGrid() {
                     href={`/tjanster#${t.anchor}`}
                     className="group relative block w-full h-full overflow-hidden"
                   >
-                    <ServiceSymbol
-                      kind={t.anchor}
-                      className="absolute -right-6 -bottom-6 md:-right-8 md:-bottom-8 w-28 h-28 md:w-48 md:h-48 text-bordeaux/20 transition-transform duration-700 ease-out group-hover:rotate-6 group-hover:scale-105"
-                    />
-                    <div className="relative h-full w-full p-5 md:p-8 flex flex-col justify-between text-plommon">
-                      <div>
-                        <h3 className="font-display font-light text-2xl md:text-3xl lg:text-4xl text-balance leading-tight max-w-[14ch] group-hover:text-bordeaux transition-colors">
-                          {t.title}
-                        </h3>
-                        <p className="mt-3 md:mt-4 text-plommon/65 text-sm md:text-base max-w-md leading-snug">
-                          {t.blurb}
-                        </p>
-                      </div>
-                      <span className="inline-flex items-center gap-2 text-rose text-xs tracking-[0.25em] uppercase">
+                    <div className="relative h-full w-full px-5 pb-6 pt-16 md:px-8 md:pb-8 md:pt-24 flex flex-col text-plommon">
+                      <h3 className="font-display font-light text-2xl md:text-3xl lg:text-[2.5rem] text-balance leading-[1.05] max-w-[15ch] group-hover:text-bordeaux transition-colors">
+                        {t.title}
+                      </h3>
+                      <p className="mt-5 md:mt-6 text-plommon/70 text-sm md:text-base leading-relaxed max-w-md">
+                        {t.blurb}
+                      </p>
+                      <span className="mt-auto pt-10 inline-flex items-center gap-2 text-rose text-xs tracking-[0.25em] uppercase">
                         Läs mer
                         <span className="transition-transform group-hover:translate-x-1">→</span>
                       </span>
