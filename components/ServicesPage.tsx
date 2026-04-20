@@ -1,12 +1,14 @@
 import Reveal from './Reveal';
+import ServiceSymbol from './ServiceSymbol';
+
+type Kind = 'strategi' | 'brand-identity' | 'film-foto' | 'grafisk-design' | 'digital';
 
 type Service = {
   number: string;
-  anchor: string;
+  anchor: Kind;
   title: string;
   lede: string;
   bullets: string[];
-  image: string;
 };
 
 const SERVICES: Service[] = [
@@ -16,8 +18,7 @@ const SERVICES: Service[] = [
     title: 'Strategi & varumärke',
     lede:
       'Positionering, budskap och tonalitet. Vi börjar med att förstå var ni står idag, vad ni vill säga, och vad som faktiskt skiljer er från konkurrenterna. Sen översätter vi det till något ni kan äga.',
-    bullets: ['Brand platform', 'Positionering', 'Budskapshierarki', 'Tonalitet'],
-    image: 'bts-04'
+    bullets: ['Brand platform', 'Positionering', 'Budskapshierarki', 'Tonalitet']
   },
   {
     number: '02',
@@ -25,8 +26,7 @@ const SERVICES: Service[] = [
     title: 'Brand identity',
     lede:
       'Logotyp, designsystem, typografi, färg och bildspråk. Ett visuellt språk som känns samlat överallt där ni syns. Vi designar för att fungera, inte bara för att se bra ut i en casefilm.',
-    bullets: ['Logotyp', 'Designsystem', 'Typografi & färg', 'Bildmanér'],
-    image: 'bts-11'
+    bullets: ['Logotyp', 'Designsystem', 'Typografi & färg', 'Bildmanér']
   },
   {
     number: '03',
@@ -34,8 +34,7 @@ const SERVICES: Service[] = [
     title: 'Film & foto',
     lede:
       'Reklamfilm, kampanjbilder, produkt och event. Vi producerar själva, från storyboard till färdig leverans. Det gör tempot högre och priset lägre.',
-    bullets: ['Reklamfilm', 'Kampanjfoto', 'Eventdokumentation', 'Social-first content'],
-    image: 'bts-13'
+    bullets: ['Reklamfilm', 'Kampanjfoto', 'Eventdokumentation', 'Social-first content']
   },
   {
     number: '04',
@@ -43,8 +42,7 @@ const SERVICES: Service[] = [
     title: 'Grafisk design',
     lede:
       'Trycksaker, digital grafik, presentationer och sales collateral. Vi designar de vardagliga delarna av varumärket med samma noggrannhet som kampanjerna.',
-    bullets: ['Trycksaker', 'Presentationer', 'Sales collateral', 'Digital grafik'],
-    image: 'bts-07'
+    bullets: ['Trycksaker', 'Presentationer', 'Sales collateral', 'Digital grafik']
   },
   {
     number: '05',
@@ -52,8 +50,7 @@ const SERVICES: Service[] = [
     title: 'Digital närvaro',
     lede:
       'Webb, SEO, paid social och analys. Vi bygger infrastrukturen så att det ni producerar faktiskt når fram, och mäter så ni vet vad som fungerar.',
-    bullets: ['Webb & utveckling', 'SEO', 'Paid social & Google Ads', 'Analys & rapport'],
-    image: 'bts-09'
+    bullets: ['Webb & utveckling', 'SEO', 'Paid social & Google Ads', 'Analys & rapport']
   }
 ];
 
@@ -88,18 +85,18 @@ export default function ServicesPage() {
   return (
     <>
       <section className="relative bg-cream text-plommon px-6 md:px-10 pt-40 md:pt-48 pb-14 md:pb-20">
-        <div className="mx-auto max-w-[1500px]">
+        <div className="mx-auto max-w-4xl text-center">
           <Reveal>
             <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Tjänster</p>
-            <h1 className="font-display font-light text-display-xl text-balance max-w-[16ch] leading-[1.02]">
-              Modernisering, <span className="text-bordeaux font-normal">utan omstart.</span>
+            <h1 className="font-display font-light text-display-xl text-balance max-w-[18ch] leading-[1.02] mx-auto">
+              Varumärken med <span className="text-bordeaux font-normal">rötter och riktning.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.08}>
-            <p className="mt-8 md:mt-10 max-w-2xl text-lg md:text-xl text-plommon/75 leading-relaxed">
-              Vi jobbar med mellanstora B2B-varumärken som vill se nyare ut utan att
-              förlora det som redan fungerar. Strategi, identitet, film, foto och
-              webb. Vi bygger det som behövs och inget mer.
+            <p className="mt-8 md:mt-10 max-w-2xl mx-auto text-lg md:text-xl text-plommon/75 leading-relaxed">
+              Vi jobbar med varumärken som har något att säga och vill säga det
+              bättre. Strategi, identitet, film, foto och webb. Vi bygger det ni
+              behöver, i den takt som känns rätt.
             </p>
           </Reveal>
         </div>
@@ -111,7 +108,7 @@ export default function ServicesPage() {
             {SERVICES.map((s, i) => (
               <li key={s.anchor} id={s.anchor} className="scroll-mt-28">
                 <Reveal delay={Math.min(i * 0.04, 0.2)}>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 py-12 md:py-20 border-b border-plommon/15">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 py-12 md:py-20 border-b border-plommon/15 items-center">
                     <div className="md:col-span-1">
                       <span className="font-display font-medium text-rose text-sm tabular-nums tracking-[0.2em]">
                         {s.number}
@@ -133,14 +130,11 @@ export default function ServicesPage() {
                         ))}
                       </ul>
                     </div>
-                    <div className="md:col-span-5">
-                      <div className="relative w-full aspect-[4/3] md:aspect-[5/4] overflow-hidden ring-1 ring-plommon/10">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={`/images/${s.image}-1600.webp`}
-                          alt=""
-                          loading="lazy"
-                          className="absolute inset-0 w-full h-full object-cover"
+                    <div className="md:col-span-5 flex justify-center md:justify-end">
+                      <div className="relative w-full max-w-[280px] aspect-square flex items-center justify-center">
+                        <ServiceSymbol
+                          kind={s.anchor}
+                          className="w-3/5 h-3/5 text-bordeaux"
                         />
                       </div>
                     </div>
@@ -155,12 +149,12 @@ export default function ServicesPage() {
       <section className="bg-cream text-plommon px-6 md:px-10 py-16 md:py-28 border-t border-plommon/10">
         <div className="mx-auto max-w-[1500px]">
           <Reveal>
-            <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Så jobbar vi</p>
-            <h2 className="font-display font-light text-display-md md:text-display-lg text-balance max-w-[18ch] mb-12 md:mb-20">
-              Fyra steg. <span className="text-bordeaux font-normal">Utan onödigt oväsen.</span>
+            <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5 text-center">Så jobbar vi</p>
+            <h2 className="font-display font-light text-display-md md:text-display-lg text-balance max-w-[22ch] mx-auto mb-12 md:mb-20 leading-[1.05] text-center">
+              Fyra steg, <span className="text-rose font-normal">tillsammans.</span>
             </h2>
           </Reveal>
-          <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10 md:gap-x-20 gap-y-10">
+          <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10 md:gap-x-20 gap-y-10 max-w-5xl mx-auto">
             {PROCESS.map((p, i) => (
               <Reveal key={p.step} delay={i * 0.05}>
                 <li className="border-t border-plommon/15 pt-6 md:pt-8">

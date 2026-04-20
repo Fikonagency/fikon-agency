@@ -3,8 +3,8 @@ import { contact } from '@/lib/data';
 
 const FIG_STYLE: React.CSSProperties = {
   backgroundColor: '#2A1318',
-  WebkitMaskImage: "url('/brand/bb-03.png')",
-  maskImage: "url('/brand/bb-03.png')",
+  WebkitMaskImage: "url('/brand/fikon-fig.png')",
+  maskImage: "url('/brand/fikon-fig.png')",
   WebkitMaskSize: 'contain',
   maskSize: 'contain',
   WebkitMaskRepeat: 'no-repeat',

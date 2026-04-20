@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Reveal from './Reveal';
 import LazyVimeo from './LazyVimeo';
+import ServiceSymbol from './ServiceSymbol';
 import { projects } from '@/lib/data';
 
 async function getPoster(vimeoId: string, vimeoHash?: string): Promise<string | undefined> {
@@ -18,6 +19,8 @@ async function getPoster(vimeoId: string, vimeoHash?: string): Promise<string | 
   return undefined;
 }
 
+type Kind = 'strategi' | 'brand-identity' | 'film-foto' | 'grafisk-design' | 'digital';
+
 type VideoTile = {
   kind: 'video';
   id: string;
@@ -33,8 +36,8 @@ type ServiceTile = {
   number: string;
   title: string;
   blurb: string;
-  anchor: string;
-  bg: string;
+  anchor: Kind;
+  tone: 'cream' | 'plommon';
 };
 
 type Tile = VideoTile | ServiceTile;
@@ -44,22 +47,22 @@ const LAYOUT: Tile[] = [
   { kind: 'service', id: 's-strategi',                   colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
     number: '01', title: 'Strategi & varumärke',
     blurb: 'Positionering, story och tonalitet som håller över tid.',
-    anchor: 'strategi', bg: 'bts-04' },
+    anchor: 'strategi', tone: 'cream' },
   { kind: 'video',   id: 'sigma-connectivity-event',     colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3' },
   { kind: 'service', id: 's-film-foto',                  colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3',
     number: '02', title: 'Film & foto',
     blurb: 'Reklamfilm, kampanjbilder och social-first content. Från koncept till leverans.',
-    anchor: 'film-foto', bg: 'bts-11' },
+    anchor: 'film-foto', tone: 'plommon' },
   { kind: 'video',   id: 'flawlessface-clinic',          colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3' },
   { kind: 'video',   id: 'currylicious',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
   { kind: 'service', id: 's-grafisk',                    colClass: 'col-span-1 md:col-span-6',  rowClass: 'md:row-span-3',
     number: '03', title: 'Grafisk design',
     blurb: 'Logotyp, identitet och designsystem som lever i alla kanaler.',
-    anchor: 'grafisk-design', bg: 'bts-13' },
+    anchor: 'grafisk-design', tone: 'cream' },
   { kind: 'service', id: 's-digital',                    colClass: 'col-span-1 md:col-span-6',  rowClass: 'md:row-span-3',
     number: '04', title: 'Digital närvaro',
     blurb: 'Annonsering, social media, SEO och webb. Vi mäter och optimerar.',
-    anchor: 'digital', bg: 'bts-07' },
+    anchor: 'digital', tone: 'plommon' },
   { kind: 'video',   id: 'p-1184231741',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' }
 ];
 
@@ -111,34 +114,35 @@ export default async function VideoGrid() {
             const baseClasses = `${t.colClass} ${t.rowClass} ${mobileAspect} md:aspect-auto ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[300px]'}`;
 
             if (t.kind === 'service') {
+              const isCream = t.tone === 'cream';
+              const bg = isCream ? 'bg-cream ring-plommon/15' : 'bg-plommon ring-plommon';
+              const txt = isCream ? 'text-plommon' : 'text-cream';
+              const sub = isCream ? 'text-plommon/60' : 'text-cream/70';
+              const symbolTone = isCream ? 'text-bordeaux/30' : 'text-rose/25';
               return (
                 <Reveal key={t.id} delay={Math.min(i * 0.03, 0.2)} className={baseClasses}>
                   <Link
                     href={`/tjanster#${t.anchor}`}
-                    className="group relative block w-full h-full overflow-hidden bg-plommon ring-1 ring-plommon/10"
+                    className={`group relative block w-full h-full overflow-hidden ring-1 ${bg} ${txt}`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/images/${t.bg}-1600.webp`}
-                      alt=""
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    <ServiceSymbol
+                      kind={t.anchor}
+                      className={`absolute -right-6 -bottom-6 md:-right-10 md:-bottom-10 w-32 h-32 md:w-56 md:h-56 ${symbolTone} transition-transform duration-700 ease-out group-hover:rotate-6`}
                     />
-                    <div className="absolute inset-0 bg-plommon/65 group-hover:bg-plommon/55 transition-colors duration-500" />
-                    <div className="relative h-full w-full p-5 md:p-7 flex flex-col justify-between text-cream">
+                    <div className="relative h-full w-full p-6 md:p-8 flex flex-col justify-between">
                       <div className="flex items-center justify-between">
                         <span className="font-display font-medium text-xs tracking-[0.3em] uppercase text-rose">
                           Tjänst {t.number}
                         </span>
-                        <span className="font-display font-light text-xs tracking-[0.2em] uppercase opacity-70">
+                        <span className={`font-display font-light text-[10px] tracking-[0.25em] uppercase ${sub}`}>
                           Fikon
                         </span>
                       </div>
                       <div>
-                        <h3 className="font-display font-light text-2xl md:text-3xl lg:text-4xl text-balance leading-tight">
+                        <h3 className="font-display font-light text-2xl md:text-3xl lg:text-4xl text-balance leading-tight max-w-[14ch]">
                           {t.title}
                         </h3>
-                        <p className="mt-3 text-cream/80 text-sm md:text-base max-w-md leading-snug">
+                        <p className={`mt-4 text-sm md:text-base max-w-md leading-snug ${sub}`}>
                           {t.blurb}
                         </p>
                         <span className="mt-5 inline-flex items-center gap-2 text-rose text-xs tracking-[0.25em] uppercase opacity-90 group-hover:opacity-100">

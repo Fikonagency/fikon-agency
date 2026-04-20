@@ -13,7 +13,7 @@ export default function PortfolioClient({ projects }: { projects: EnrichedProjec
         <Reveal>
           <p className="text-rose text-xs tracking-[0.3em] uppercase mb-4">Portfolio</p>
           <h1 className="font-display font-light text-display-xl mb-16 md:mb-24 text-balance max-w-4xl leading-[1.02]">
-            Ett urval <span className="text-bordeaux font-normal">av det vi gjort.</span>
+            Våra <span className="text-bordeaux font-normal">berättelser.</span>
           </h1>
         </Reveal>
 

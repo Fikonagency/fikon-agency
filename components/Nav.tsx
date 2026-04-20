@@ -48,8 +48,8 @@ export default function Nav() {
             aria-hidden
             className="block w-full h-full bg-plommon"
             style={{
-              WebkitMaskImage: "url('/brand/bb-03.png')",
-              maskImage: "url('/brand/bb-03.png')",
+              WebkitMaskImage: "url('/brand/fikon-fig.png')",
+              maskImage: "url('/brand/fikon-fig.png')",
               WebkitMaskSize: 'contain',
               maskSize: 'contain',
               WebkitMaskRepeat: 'no-repeat',

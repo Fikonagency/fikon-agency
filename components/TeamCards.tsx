@@ -1,5 +1,5 @@
 import Reveal from './Reveal';
-import { team, contact, btsPhotos } from '@/lib/data';
+import { team, contact } from '@/lib/data';
 
 const BB_MASK: React.CSSProperties = {
   WebkitMaskImage: "url('/brand/bb-03.png')",
@@ -12,89 +12,38 @@ const BB_MASK: React.CSSProperties = {
   maskPosition: 'center'
 };
 
-type Scatter = {
-  src: string;
-  top: string;
-  left?: string;
-  right?: string;
-  width: string;
-  rotate: number;
-  hidden?: 'md' | 'lg';
-};
-
-const SCATTER: Scatter[] = [
-  { src: 'bts-01', top: '2%',  left: '0%',   width: '15%', rotate: -4 },
-  { src: 'bts-04', top: '0%',  right: '1%',  width: '14%', rotate: 3 },
-  { src: 'bts-07', top: '20%', left: '0%',   width: '12%', rotate: 5, hidden: 'md' },
-  { src: 'bts-09', top: '16%', right: '0%',  width: '13%', rotate: -6, hidden: 'md' },
-  { src: 'bts-11', top: '44%', left: '1%',   width: '14%', rotate: -2 },
-  { src: 'bts-13', top: '50%', right: '0%',  width: '15%', rotate: 4 },
-  { src: 'bts-14', top: '72%', left: '0%',   width: '13%', rotate: 6, hidden: 'md' },
-  { src: 'bts-16', top: '78%', right: '1%',  width: '12%', rotate: -5, hidden: 'md' }
-];
-
 export default function TeamCards() {
   return (
-    <section className="bg-cream text-plommon px-6 md:px-10 pt-32 md:pt-40 pb-16 md:pb-20 overflow-hidden">
-      <div className="mx-auto max-w-[1500px]">
+    <section className="relative bg-cream text-plommon px-6 md:px-10 pt-32 md:pt-40 pb-10 md:pb-16">
+      <div className="relative mx-auto max-w-4xl text-center">
         <Reveal>
           <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Teamet</p>
-          <h1 className="font-display font-light text-display-lg md:text-display-xl text-balance max-w-[22ch] mb-12 md:mb-16 leading-[1.02]">
+          <h1 className="font-display font-light text-display-lg md:text-display-xl text-balance mb-14 md:mb-20 leading-[1.02] mx-auto">
             Möt <span className="text-bordeaux font-normal">Fikon Agency.</span>
           </h1>
         </Reveal>
 
-        {/* Desktop: scatter + portraits stage */}
-        <div className="relative hidden md:block">
-          <div aria-hidden className="absolute inset-0 pointer-events-none">
-            {SCATTER.map((s, i) => (
-              <div
-                key={s.src + i}
-                className={`absolute ${s.hidden === 'md' ? 'hidden lg:block' : ''}`}
-                style={{
-                  top: s.top,
-                  left: s.left,
-                  right: s.right,
-                  width: s.width,
-                  transform: `rotate(${s.rotate}deg)`
-                }}
-              >
-                <div className="aspect-[4/3] overflow-hidden ring-1 ring-plommon/15 shadow-[0_10px_40px_-12px_rgba(42,19,24,0.4)]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={`/images/${s.src}-800.webp`}
-                    alt=""
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+        {/* Desktop + tablet: side by side, larger portraits */}
+        <ul className="hidden md:grid grid-cols-2 gap-6 lg:gap-10 max-w-3xl mx-auto">
+          {team.map((m, i) => (
+            <li key={m.slug}>
+              <Reveal delay={i * 0.1}>
+                <PortraitCard member={m} />
+              </Reveal>
+            </li>
+          ))}
+        </ul>
 
-          <ul className="relative grid grid-cols-2 gap-3 lg:gap-6 py-10 px-[18%] lg:px-[20%]">
-            {team.map((m, i) => (
-              <li key={m.slug}>
-                <Reveal delay={i * 0.1}>
-                  <PortraitCard member={m} />
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Mobile: team in 2-col row */}
-        <div className="md:hidden">
-          <ul className="grid grid-cols-2 gap-4">
-            {team.map((m, i) => (
-              <li key={m.slug}>
-                <Reveal delay={i * 0.08}>
-                  <PortraitCard member={m} compact />
-                </Reveal>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Mobile: 2-col row */}
+        <ul className="md:hidden grid grid-cols-2 gap-4">
+          {team.map((m, i) => (
+            <li key={m.slug}>
+              <Reveal delay={i * 0.08}>
+                <PortraitCard member={m} compact />
+              </Reveal>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -108,30 +57,43 @@ function PortraitCard({
   compact?: boolean;
 }) {
   const tint = m.slug === 'zana' ? 'bg-plommon' : 'bg-bordeaux';
+  const imgStyle: React.CSSProperties =
+    m.slug === 'zana'
+      ? { objectPosition: 'center 18%', transform: 'scale(0.92)' }
+      : { objectPosition: 'center 30%', transform: 'scale(0.82)' };
   return (
     <article className="flex flex-col items-center text-center">
       <div
         className={
           compact
-            ? 'relative w-full aspect-square max-w-[180px]'
-            : 'relative w-[220px] md:w-[260px] lg:w-[300px] aspect-square'
+            ? 'relative w-full aspect-square max-w-[200px] mx-auto'
+            : 'relative w-full aspect-square max-w-[340px] lg:max-w-[420px] mx-auto'
         }
       >
+        {/* soft tinted halo behind */}
         <span
           aria-hidden
-          className={`absolute inset-0 ${tint} opacity-15 blur-2xl`}
+          className={`absolute inset-0 ${tint} opacity-12 blur-2xl`}
           style={BB_MASK}
         />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`/images/${m.portrait}-1600.webp`}
-          alt={m.name}
-          className="absolute inset-0 w-full h-full object-cover"
+        {/* masked portrait — plommon fill inside mask, image sits inside with scale/offset */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-plommon/90"
           style={BB_MASK}
         />
+        <div className="absolute inset-0" style={BB_MASK}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`/images/${m.portrait}-1600.webp`}
+            alt={m.name}
+            className="w-full h-full object-cover"
+            style={imgStyle}
+          />
+        </div>
       </div>
       <h2
-        className={`${compact ? 'mt-4 text-lg' : 'mt-6 text-2xl md:text-3xl lg:text-4xl'} font-display font-medium tracking-tight`}
+        className={`${compact ? 'mt-4 text-lg' : 'mt-7 text-3xl md:text-4xl lg:text-5xl'} font-display font-medium tracking-tight`}
       >
         {m.name}
       </h2>

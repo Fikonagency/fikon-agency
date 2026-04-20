@@ -1,6 +1,7 @@
 import TeamCards from '@/components/TeamCards';
 import AboutIntro from '@/components/AboutIntro';
 import Clients from '@/components/Clients';
+import AboutScatter from '@/components/AboutScatter';
 
 export const metadata = {
   title: 'Om oss · Fikon Agency',
@@ -9,10 +10,13 @@ export const metadata = {
 
 export default function OmPage() {
   return (
-    <>
-      <TeamCards />
-      <AboutIntro />
-      <Clients />
-    </>
+    <section className="relative overflow-hidden bg-cream">
+      <AboutScatter />
+      <div className="relative z-10">
+        <TeamCards />
+        <AboutIntro />
+        <Clients />
+      </div>
+    </section>
   );
 }
