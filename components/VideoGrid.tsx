@@ -95,7 +95,7 @@ const LAYOUT: Tile[] = [
     anchor: 'film-foto', mobileOrder: 6 },
   { kind: 'video',   id: 'currylicious',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 7 },
 
-  { kind: 'video',   id: 's-t-petri',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 9 },
+  { kind: 'video',   id: 'p-1184232574',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3', mobileOrder: 9 },
   { kind: 'service', id: 's-grafisk',                colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
     title: 'Grafisk design',
     blurb:

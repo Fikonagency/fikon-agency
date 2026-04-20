@@ -134,7 +134,7 @@ export const projects: Project[] = [
   },
   { id: 'vertikal-30s', vimeoId: '1184232598', title: 'Vertikal', client: 'TBD', year: 2026, kind: 'social', featured: false, listed: false },
   { id: 'p-1184231463', vimeoId: '1184231463', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
-  { id: 'p-1184232574', vimeoId: '1184232574', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
+  { id: 'p-1184232574', vimeoId: '1184232574', title: 'Gardinex', client: 'Gardinex', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'sigma-connectivity-interview', vimeoId: '1184232355', title: 'Sigma Connectivity · Intervju', client: 'Sigma Connectivity', year: 2026, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231741', vimeoId: '1184231741', title: 'Sigma Connectivity', client: 'Sigma Connectivity', year: 2025, kind: 'film', featured: false, listed: false },
   { id: 'p-1184231459', vimeoId: '1184231459', title: 'Projekt', client: 'TBD', year: 2026, kind: 'film', featured: false, listed: false },
