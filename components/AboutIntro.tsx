@@ -21,7 +21,7 @@ const HOW = [
 export default function AboutIntro() {
   return (
     <>
-      <section className="relative bg-cream text-plommon px-6 md:px-10 py-14 md:py-20">
+      <section className="relative text-plommon px-6 md:px-10 py-14 md:py-20">
         <div className="relative mx-auto max-w-3xl text-center">
           <Reveal>
             <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">En byrå</p>
@@ -41,7 +41,7 @@ export default function AboutIntro() {
         </div>
       </section>
 
-      <section className="relative bg-cream text-plommon px-6 md:px-10 py-14 md:py-20">
+      <section className="relative text-plommon px-6 md:px-10 py-14 md:py-20">
         <div className="relative mx-auto max-w-3xl text-center">
           <Reveal>
             <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Vårt team</p>
@@ -61,7 +61,7 @@ export default function AboutIntro() {
         </div>
       </section>
 
-      <section className="relative bg-cream text-plommon px-6 md:px-10 py-14 md:py-20">
+      <section className="relative text-plommon px-6 md:px-10 py-14 md:py-20">
         <div className="relative mx-auto max-w-5xl text-center">
           <Reveal>
             <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Hur vi jobbar</p>

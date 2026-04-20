@@ -33,11 +33,9 @@ type ServiceTile = {
   id: string;
   colClass: string;
   rowClass: string;
-  number: string;
   title: string;
   blurb: string;
   anchor: Kind;
-  tone: 'cream' | 'plommon';
 };
 
 type Tile = VideoTile | ServiceTile;
@@ -45,25 +43,29 @@ type Tile = VideoTile | ServiceTile;
 const LAYOUT: Tile[] = [
   { kind: 'video',   id: 'gardinex',                     colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
   { kind: 'service', id: 's-strategi',                   colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3',
-    number: '01', title: 'Strategi & varumärke',
+    title: 'Strategi & varumärke',
     blurb: 'Positionering, story och tonalitet som håller över tid.',
-    anchor: 'strategi', tone: 'cream' },
+    anchor: 'strategi' },
   { kind: 'video',   id: 'sigma-connectivity-event',     colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-film-foto',                  colClass: 'col-span-2 md:col-span-8',  rowClass: 'md:row-span-3',
-    number: '02', title: 'Film & foto',
+  { kind: 'service', id: 's-brand-identity',             colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
+    title: 'Brand identity',
+    blurb: 'Logotyp, designsystem och bildspråk som känns samlat överallt.',
+    anchor: 'brand-identity' },
+  { kind: 'service', id: 's-film-foto',                  colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
+    title: 'Film & foto',
     blurb: 'Reklamfilm, kampanjbilder och social-first content. Från koncept till leverans.',
-    anchor: 'film-foto', tone: 'plommon' },
-  { kind: 'video',   id: 'flawlessface-clinic',          colClass: 'col-span-2 md:col-span-4',  rowClass: 'md:row-span-3' },
+    anchor: 'film-foto' },
   { kind: 'video',   id: 'currylicious',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' },
-  { kind: 'service', id: 's-grafisk',                    colClass: 'col-span-1 md:col-span-6',  rowClass: 'md:row-span-3',
-    number: '03', title: 'Grafisk design',
-    blurb: 'Logotyp, identitet och designsystem som lever i alla kanaler.',
-    anchor: 'grafisk-design', tone: 'cream' },
-  { kind: 'service', id: 's-digital',                    colClass: 'col-span-1 md:col-span-6',  rowClass: 'md:row-span-3',
-    number: '04', title: 'Digital närvaro',
+  { kind: 'service', id: 's-grafisk',                    colClass: 'col-span-1 md:col-span-4',  rowClass: 'md:row-span-3',
+    title: 'Grafisk design',
+    blurb: 'Trycksaker, presentationer och sales collateral med samma noggrannhet som kampanjerna.',
+    anchor: 'grafisk-design' },
+  { kind: 'video',   id: 'flawlessface-clinic',          colClass: 'col-span-1 md:col-span-8',  rowClass: 'md:row-span-3' },
+  { kind: 'service', id: 's-digital',                    colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3',
+    title: 'Digital närvaro',
     blurb: 'Annonsering, social media, SEO och webb. Vi mäter och optimerar.',
-    anchor: 'digital', tone: 'plommon' },
-  { kind: 'video',   id: 'p-1184231741',                 colClass: 'col-span-2 md:col-span-12', rowClass: 'md:row-span-3' }
+    anchor: 'digital' },
+  { kind: 'video',   id: 'p-1184231741',                 colClass: 'col-span-2 md:col-span-6',  rowClass: 'md:row-span-3' }
 ];
 
 export default async function VideoGrid() {
@@ -114,42 +116,29 @@ export default async function VideoGrid() {
             const baseClasses = `${t.colClass} ${t.rowClass} ${mobileAspect} md:aspect-auto ${isHero ? 'md:min-h-[504px]' : 'md:min-h-[300px]'}`;
 
             if (t.kind === 'service') {
-              const isCream = t.tone === 'cream';
-              const bg = isCream ? 'bg-cream ring-plommon/15' : 'bg-plommon ring-plommon';
-              const txt = isCream ? 'text-plommon' : 'text-cream';
-              const sub = isCream ? 'text-plommon/60' : 'text-cream/70';
-              const symbolTone = isCream ? 'text-bordeaux/30' : 'text-rose/25';
               return (
                 <Reveal key={t.id} delay={Math.min(i * 0.03, 0.2)} className={baseClasses}>
                   <Link
                     href={`/tjanster#${t.anchor}`}
-                    className={`group relative block w-full h-full overflow-hidden ring-1 ${bg} ${txt}`}
+                    className="group relative block w-full h-full overflow-hidden"
                   >
                     <ServiceSymbol
                       kind={t.anchor}
-                      className={`absolute -right-6 -bottom-6 md:-right-10 md:-bottom-10 w-32 h-32 md:w-56 md:h-56 ${symbolTone} transition-transform duration-700 ease-out group-hover:rotate-6`}
+                      className="absolute -right-6 -bottom-6 md:-right-8 md:-bottom-8 w-28 h-28 md:w-48 md:h-48 text-bordeaux/20 transition-transform duration-700 ease-out group-hover:rotate-6 group-hover:scale-105"
                     />
-                    <div className="relative h-full w-full p-6 md:p-8 flex flex-col justify-between">
-                      <div className="flex items-center justify-between">
-                        <span className="font-display font-medium text-xs tracking-[0.3em] uppercase text-rose">
-                          Tjänst {t.number}
-                        </span>
-                        <span className={`font-display font-light text-[10px] tracking-[0.25em] uppercase ${sub}`}>
-                          Fikon
-                        </span>
-                      </div>
+                    <div className="relative h-full w-full p-5 md:p-8 flex flex-col justify-between text-plommon">
                       <div>
-                        <h3 className="font-display font-light text-2xl md:text-3xl lg:text-4xl text-balance leading-tight max-w-[14ch]">
+                        <h3 className="font-display font-light text-2xl md:text-3xl lg:text-4xl text-balance leading-tight max-w-[14ch] group-hover:text-bordeaux transition-colors">
                           {t.title}
                         </h3>
-                        <p className={`mt-4 text-sm md:text-base max-w-md leading-snug ${sub}`}>
+                        <p className="mt-3 md:mt-4 text-plommon/65 text-sm md:text-base max-w-md leading-snug">
                           {t.blurb}
                         </p>
-                        <span className="mt-5 inline-flex items-center gap-2 text-rose text-xs tracking-[0.25em] uppercase opacity-90 group-hover:opacity-100">
-                          Läs mer
-                          <span className="transition-transform group-hover:translate-x-1">→</span>
-                        </span>
                       </div>
+                      <span className="inline-flex items-center gap-2 text-rose text-xs tracking-[0.25em] uppercase">
+                        Läs mer
+                        <span className="transition-transform group-hover:translate-x-1">→</span>
+                      </span>
                     </div>
                   </Link>
                 </Reveal>

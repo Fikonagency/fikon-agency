@@ -14,7 +14,7 @@ const BB_MASK: React.CSSProperties = {
 
 export default function TeamCards() {
   return (
-    <section className="relative bg-cream text-plommon px-6 md:px-10 pt-32 md:pt-40 pb-10 md:pb-16">
+    <section className="relative text-plommon px-6 md:px-10 pt-32 md:pt-40 pb-10 md:pb-16">
       <div className="relative mx-auto max-w-4xl text-center">
         <Reveal>
           <p className="text-rose text-xs tracking-[0.4em] uppercase mb-5">Teamet</p>
@@ -59,8 +59,8 @@ function PortraitCard({
   const tint = m.slug === 'zana' ? 'bg-plommon' : 'bg-bordeaux';
   const imgStyle: React.CSSProperties =
     m.slug === 'zana'
-      ? { objectPosition: 'center 18%', transform: 'scale(0.92)' }
-      : { objectPosition: 'center 30%', transform: 'scale(0.82)' };
+      ? { objectPosition: 'center 5%', transform: 'scale(0.70) translate(-5%, -15%)' }
+      : { objectPosition: 'center 30%', transform: 'scale(0.78) translate(-8%, 10%)' };
   return (
     <article className="flex flex-col items-center text-center">
       <div

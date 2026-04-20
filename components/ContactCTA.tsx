@@ -78,9 +78,9 @@ export default function ContactCTA() {
         <div className="relative py-12 md:py-20 text-center">
           <Reveal>
             <p className="text-rose text-xs md:text-sm tracking-[0.4em] uppercase mb-6">
-              Hej.
+              Hej!
             </p>
-            <h2 className="font-display font-light text-cream leading-[1.05] text-display-xl text-balance drop-shadow-[0_6px_36px_rgba(42,19,24,0.6)] max-w-[18ch] mx-auto">
+            <h2 className="font-display font-light text-cream leading-[1.05] text-balance drop-shadow-[0_6px_36px_rgba(42,19,24,0.6)] max-w-[22ch] mx-auto text-[clamp(1.8rem,5.4vw,4.2rem)]">
               Skriv till oss.
               <br />
               <span className="text-rose">Vi svarar samma dag.</span>

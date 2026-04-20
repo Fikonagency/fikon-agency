@@ -3,7 +3,7 @@ import Reveal from './Reveal';
 
 export default function Clients() {
   return (
-    <section className="bg-cream text-plommon border-t border-plommon/10 px-6 py-10 md:py-14">
+    <section className="relative text-plommon border-t border-plommon/10 px-6 py-10 md:py-14">
       <div className="mx-auto max-w-5xl">
         <Reveal>
           <p className="text-plommon/50 text-xs tracking-[0.3em] uppercase mb-10 text-center">
